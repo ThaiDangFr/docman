@@ -1,5 +1,4 @@
-# Tutoriel Ruby on Rails : Application Exemple
+# Application basique
 
-C'est l'Application Exemple pour le
-[*Tutoriel Ruby on Rails : Apprendre Rails par l'exemple*](http://railstutorial.org/)
-par [Michael Hartl](http://michaelhartl.com/).
+Application basique avec une gestion de l'authentification, des privilèges administrateurs, des tests rspec
+L'objectif est d'être un point de départ pour une application en rails 5
