@@ -16,6 +16,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'gravatar_image_tag'
 gem 'will_paginate', '~> 3.1.0'
+gem 'carrierwave'
 
 
 group :development do
@@ -25,7 +26,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rspec-rails'
   gem 'annotate'
-	gem 'faker'
+  gem 'faker'
 end
 
 group :test do
