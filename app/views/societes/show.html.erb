@@ -1,0 +1,27 @@
+<p>
+  <strong>Raison sociale:</strong>
+  <%= @societe.raison_sociale %>
+</p>
+
+<p>
+  <strong>Adresse:</strong>
+  <%= @societe.adresse %>
+</p>
+
+<p>
+  <strong>Code postal:</strong>
+  <%= @societe.code_postal %>
+</p>
+
+<p>
+  <strong>Ville:</strong>
+  <%= @societe.ville %>
+</p>
+
+<p>
+  <strong>Téléphone:</strong>
+  <%= @societe.telephone %>
+</p>
+
+<%= link_to 'Modifier', edit_societe_path(@societe) %> |
+<%= link_to 'Retour', societes_path %>

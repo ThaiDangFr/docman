@@ -1,0 +1,33 @@
+<%= form_for(societe) do |f| %>
+<%= render 'shared/error_messages', :object => f.object %>
+
+
+  <div class="field">
+    <%= f.label :raison_sociale %><br/>
+    <%= f.text_field :raison_sociale %>
+  </div>
+
+  <div class="field">
+    <%= f.label :adresse %><br/>
+    <%= f.text_field :adresse %>
+  </div>
+
+  <div class="field">
+    <%= f.label :code_postal %><br/>
+    <%= f.text_field :code_postal %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ville %><br/>
+    <%= f.text_field :ville %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telephone, "Téléphone" %><br/>
+    <%= f.text_field :telephone %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Enregistrer" %>
+  </div>
+<% end %>
