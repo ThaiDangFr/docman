@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170503211346) do
+ActiveRecord::Schema.define(version: 20170507205334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,17 @@ ActiveRecord::Schema.define(version: 20170503211346) do
     t.string   "encrypted_password"
     t.string   "salt"
     t.boolean  "admin",              default: false
+    t.string   "prenom"
+    t.string   "civilite"
+    t.string   "profil"
+    t.integer  "societe_id"
+    t.string   "adresse"
+    t.string   "code_postal"
+    t.string   "ville"
+    t.string   "telephone"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["societe_id"], name: "index_users_on_societe_id", using: :btree
   end
 
+  add_foreign_key "users", "societes"
 end
