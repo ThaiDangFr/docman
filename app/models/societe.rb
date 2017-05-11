@@ -13,5 +13,6 @@
 #
 
 class Societe < ApplicationRecord
+has_many :users
 validates :raison_sociale, :presence => true
 end

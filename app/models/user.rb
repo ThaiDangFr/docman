@@ -17,6 +17,8 @@ require 'digest'
 class User < ApplicationRecord
 attr_accessor :password
 
+belongs_to :societe, optional: true
+
 email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 validates :nom, :presence => true,

@@ -1,8 +1,49 @@
 <%= render 'shared/error_messages', :object => f.object %>
 <div class="field">
+    <%= f.label :civilite, "Civilité" %><br/>
+    <%= f.select :civilite, ['M','Mme','Dr'] %>
+</div>
+
+<div class="field">
   <%= f.label :nom, "Nom" %><br/>
   <%= f.text_field :nom %>
 </div>
+
+<div class="field">
+    <%= f.label :prenom, "Prénom" %><br/>
+    <%= f.text_field :prenom %>
+</div>
+
+<div class="field">
+    <%= f.label :adresse, "Adresse" %><br/>
+    <%= f.text_field :adresse %>
+</div>
+
+<div class="field">
+    <%= f.label :code_postal, "Code postal" %><br/>
+    <%= f.text_field :code_postal %>
+</div>
+
+<div class="field">
+    <%= f.label :ville, "Ville" %><br/>
+    <%= f.text_field :ville %>
+</div>
+
+<div class="field">
+    <%= f.label :telephone, "Téléphone" %><br/>
+    <%= f.text_field :telephone %>
+</div>
+
+<div class="field">
+    <%= f.label :profil, "Profil" %><br/>
+    <%= f.select :profil, ['participant','administrateur', 'médecin référent','évaluateur'] %>
+</div>
+
+<div class="field">
+    <%= f.label :societe, "Société" %><br/>
+    <%= f.select :societe, Societe.all.collect { |p| [p.raison_sociale, p.id]} %>
+</div>
+
 
 <div class="field">
   <%= f.label :email, "Email" %><br/>
