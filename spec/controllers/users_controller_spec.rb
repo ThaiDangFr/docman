@@ -37,14 +37,14 @@ RSpec.describe UsersController, type: :controller do
             it "devrait avoir un élément pour chaque utilisateur" do
                 get :index
                 @users.each do |user|
-                    expect(response.body).to have_selector("li", text: user.nom)
+                    expect(response.body).to have_selector("td", text: user.nom)
                 end
             end
 
             it "devrait avoir un élément pour chaque utilisateur" do
                 get :index
                 @users[0..2].each do |user|
-                    expect(response.body).to have_selector("li", :text => user.nom)
+                    expect(response.body).to have_selector("td", :text => user.nom)
                 end
             end
 
@@ -84,13 +84,9 @@ RSpec.describe UsersController, type: :controller do
 
         it "devrait inclure le nom de l'utilisateur" do
             get :show, params: {id: @user}
-            expect(response.body).to have_selector("h1", text: @user.nom)
+            expect(response.body).to have_selector("p", text: @user.nom)
         end
 
-        it "devrait avoir une image de profil" do
-            get :show, params: {id: @user}
-            expect(response.body).to have_selector("h1>img", class: "gravatar")
-        end
 
     end
 
@@ -169,12 +165,7 @@ RSpec.describe UsersController, type: :controller do
 
             it "devrait avoir un message de bienvenue" do
                 post :create, params: {user: @attr}
-                expect(flash[:success]).to match(/Bienvenue dans l'Application Exemple/i)
-            end
-
-            it "devrait identifier l'utilisateur" do
-                post :create, params: {user: @attr}
-                expect(controller).to be_signed_in
+                expect(flash[:success]).to match(/Utilisateur créé/i)
             end
         end
     end
@@ -193,12 +184,6 @@ RSpec.describe UsersController, type: :controller do
         it "devrait avoir le bon titre" do
             get :edit, params: { id: @user }
             expect(response.body).to have_selector("title", text: "Edition profil", visible: false)
-        end
-
-        it "devrait avoir un lien pour changer l'image gravatar" do
-            get :edit, params: { id: @user}
-            gravatar_url = "http://gravatar.com/emails"
-            expect(response.body).to have_link("changer", href: gravatar_url)
         end
     end
 

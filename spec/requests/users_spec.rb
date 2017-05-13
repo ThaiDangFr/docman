@@ -26,7 +26,7 @@ describe "Users" do
 					fill_in "Mot de passe", :with => "foobar"
 					fill_in "Confirmation mot de passe", :with => "foobar"
 					click_button
-					expect(page).to have_selector("div.flash.success", text: "Bienvenue")
+					expect(page).to have_selector("div.flash.success", text: "Utilisateur créé")
 				end).to change(User, :count).by(1)
 			end
 		end
@@ -54,7 +54,7 @@ describe "Users" do
 				#expect(controller).to be_signed_in
 				expect(page.find_link("Déconnexion")[:href]).to eq(signout_path)
 				click_link "Déconnexion"
-				expect(page.find_link("S'identifier")[:href]).to eq(signin_path)	
+				expect(page.find_link("S'identifier", :match => :first)[:href]).to eq(signin_path)	
 				#expect(controller).not_to be_signed_in
 			end
 		end

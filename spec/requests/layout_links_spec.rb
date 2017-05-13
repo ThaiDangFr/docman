@@ -31,7 +31,7 @@ RSpec.describe "liens du layout", type: :request do
 	describe "quand pas identifie" do
 		it "doit avoir un lien de connection" do
 			visit root_path
-			expect(page.find_link("S'identifier")[:href]).to eq(signin_path)
+			expect(page.find_link("S'identifier",:match => :first)[:href]).to eq(signin_path)
 		end
 	end
 
