@@ -1,7 +1,7 @@
 class SocietesController < ApplicationController
     before_action :authenticate
     before_action :set_societe, only: [:show, :edit, :update, :destroy]
-    before_action :admin_user, only: [:show, :edit, :update, :destroy]
+    before_action :admin_user
 
   # GET /societes
   # GET /societes.json
