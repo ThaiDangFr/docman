@@ -41,7 +41,7 @@
 
 <div class="field">
     <%= f.label :societe, "Société" %><br/>
-    <%= f.select :societe, Societe.all.collect { |p| [p.raison_sociale, p.id]} %>
+    <%= f.select :societe_id, Societe.all.collect { |p| [p.raison_sociale, p.id]} %>
 </div>
 
 

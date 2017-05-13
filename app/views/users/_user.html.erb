@@ -3,7 +3,7 @@
     <td><%= user.nom %></td>
     <td><%= user.prenom %></td>
     <td><%= user.profil %></td>
-    <td><%= user.societe %></td> 
+    <td><%= user.societe.raison_sociale unless user.societe.nil? %></td> 
     <td><%= link_to 'voir', user %></td>
 
     <% if current_user.admin? %>

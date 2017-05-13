@@ -3,7 +3,7 @@
 <p><strong>Prénom:</strong>  <%= @user.prenom %></p>
 <p><strong>Email:</strong>  <%= @user.email %></p>
 <p><strong>Profil:</strong>  <%= @user.profil %></p>
-<p><strong>Société:</strong>  <%= @user.societe %></p>
+<p><strong>Société:</strong>  <%= @user.societe.raison_sociale unless @user.societe.nil? %></p>
 <p><strong>Adresse:</strong>  <%= @user.adresse %></p>
 <p><strong>Code postal:</strong>  <%= @user.code_postal %></p>
 <p><strong>Ville:</strong>  <%= @user.ville %></p>
