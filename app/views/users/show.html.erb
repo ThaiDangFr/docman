@@ -1,14 +1,13 @@
-<table class="profile" summary="Information profil">
-<tr>
-<td class="main">
-<h1>
-<%= gravatar_for @user %>
-<%= @user.nom %>
-</h1>
-</td>
-<td class="sidebar round">
-<strong>Nom</strong> <%= @user.nom %><br />
-<strong>URL</strong>  <%= link_to user_path(@user), @user %>
-</td>
-</tr>
-</table>
+<p><strong>Civilité:</strong>  <%= @user.civilite %></p>
+<p><strong>Nom:</strong>  <%= @user.nom %></p>
+<p><strong>Prénom:</strong>  <%= @user.prenom %></p>
+<p><strong>Email:</strong>  <%= @user.email %></p>
+<p><strong>Profil:</strong>  <%= @user.profil %></p>
+<p><strong>Société:</strong>  <%= @user.societe %></p>
+<p><strong>Adresse:</strong>  <%= @user.adresse %></p>
+<p><strong>Code postal:</strong>  <%= @user.code_postal %></p>
+<p><strong>Ville:</strong>  <%= @user.ville %></p>
+<p><strong>Téléphone:</strong>  <%= @user.telephone %></p>
+
+<%= link_to 'Modifier', edit_user_path(@user) %> |
+<%= link_to 'Retour', :back %>

@@ -1,6 +1,7 @@
-<h1>Sample App</h1>
-<p>
-  C'est la page d'accueil de l'Application Exemple du
-  <a href="http://railstutorial.org/">Tutoriel Ruby on Rails</a>.
-</p>
-<%= link_to "S'inscrire !", signup_path, :class => "signup_button round" %>
+<h1>Bienvenue</h1>
+
+<% if signed_in? %>
+<p>Veuillez sélectionner une section qui vous intéresse</p>
+<% else %>
+<%= link_to "S'identifier", signin_path, :class => "signup_button round" %>
+<% end %>

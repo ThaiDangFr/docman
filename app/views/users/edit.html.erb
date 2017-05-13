@@ -4,12 +4,9 @@
 	<%= render 'fields', :f => f %>
 
 	<div class="actions">
-		<%= f.submit "Update" %>
+		<%= f.submit "Enregistrer" %>
 	</div>
 <% end %>
 
-<div>
-	<%= gravatar_for @user %>
-	<a href="http://gravatar.com/emails" target="_blank">changer</a>
-</div>
-
+<%= link_to 'Voir', @user %> |
+<%= link_to 'Retour', :back %>

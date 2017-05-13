@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     before_action :authenticate, :only => [:index, :edit, :update, :destroy]
     before_action :correct_user, :only => [:edit, :update]
     before_action :admin_user,   :only => :destroy
-    before_action :protect_new_create, :only => [:new, :create]
+#    before_action :protect_new_create, :only => [:new, :create]
 
     def index
         @titre = "Tous les utilisateurs"
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
 
     def correct_user
         @user = User.find(params[:id])
-        redirect_to(root_path) unless current_user?(@user)
+        redirect_to(root_path) unless current_user?(@user) or current_user.admin?
     end
 
     def admin_user

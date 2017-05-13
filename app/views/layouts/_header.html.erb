@@ -5,12 +5,11 @@
         <li><%= link_to "Accueil",root_path  %></li>
 
         <% if signed_in? %>
-            <li><%= link_to "Utilisateurs", users_path %></li>
             <li><%= link_to "Profil", current_user %></li>
-            <li><%= link_to "Réglages", edit_user_path(current_user) %></li>
 
             <% if current_user.admin? %>
-                <li><%= link_to "Sociétés", societes_path %></li>
+                <li><i><%= link_to "Utilisateurs", users_path %></i></li>
+                <li><i><%= link_to "Sociétés", societes_path %></i></li>
             <% end %>
 
         <% end %>

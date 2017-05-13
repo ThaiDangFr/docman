@@ -33,7 +33,7 @@ validates :password, :presence => true,
              :length => { :within => 6..40 }
 
 validates_inclusion_of :civilite, :in => ['M', 'Mme', 'Dr', nil]
-validates_inclusion_of :profil, :in => ['administrateur', 'participant', 'médecin référent','évaluateur', nil]
+validates_inclusion_of :profil, :in => ['participant', 'médecin référent','évaluateur', nil]
 
 before_save :encrypt_password
 

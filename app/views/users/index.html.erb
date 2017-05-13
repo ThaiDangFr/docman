@@ -2,8 +2,30 @@
 
 <%= will_paginate %>
 
-<ul class="users">
+
+<table>
+    <thead>
+        <tr>
+            <th>Civilité</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Profil</th>
+            <th>Société</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
+
+<tbody>
 		<%= render @users %>
-</ul>
+</tbody>
+
+
+</table>
+
 
 <%= will_paginate %>
+
+<br/>
+
+<%= link_to 'Nouvel utilisateur', new_user_path %>
+

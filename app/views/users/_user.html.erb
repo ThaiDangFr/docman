@@ -1,7 +1,13 @@
-<li>
-    <%= gravatar_for user, :size => 30 %>
-    <%= link_to user.nom, user %>
-		<% if current_user.admin? %>
-		| <%= link_to "supprimer", user, method: :delete, data: {confirm: "Etes-vous certain de supprimer #{user.nom} ?"}  %>
-		<% end %>
-</li>
+<tr>
+    <td><%= user.civilite %></td>
+    <td><%= user.nom %></td>
+    <td><%= user.prenom %></td>
+    <td><%= user.profil %></td>
+    <td><%= user.societe %></td> 
+    <td><%= link_to 'voir', user %></td>
+
+    <% if current_user.admin? %>
+    <td><%= link_to 'Modifier', edit_user_path(user) %></td>
+    <td><%= link_to "supprimer", user, method: :delete, data: {confirm: "Etes-vous certain de supprimer #{user.nom} ?"}  %>
+    <% end %>
+</tr>
