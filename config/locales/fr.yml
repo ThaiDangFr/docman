@@ -180,3 +180,7 @@ fr:
         <<: *errors_template
       full_messages:
         format: "%{attribute} %{message}"
+
+  will_paginate:
+    previous_label: "Précédent"
+    next_label: "Suivant"
