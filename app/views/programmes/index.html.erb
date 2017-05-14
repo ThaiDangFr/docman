@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Programmes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Date de début</th>
+      <th>Date de fin</th>
+      <th>Responsable</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @programmes.each do |programme| %>
+      <tr>
+        <td><%= programme.titre %></td>
+        <td><%= I18n.l programme.date_debut unless programme.date_debut.nil? %></td>
+        <td><%= I18n.l programme.date_fin unless programme.date_fin.nil? %></td>
+    
+        <%
+            resp = programme.responsable
+            resp_txt = resp.civilite + " " + resp.nom + " " + resp.prenom
+        %>
+        <td><%= resp_txt %></td>
+        <td><%= link_to 'Voir', programme %></td>
+        <td><%= link_to 'Modifier', edit_programme_path(programme) %></td>
+        <td><%= link_to 'Supprimer', programme, method: :delete, data: { confirm: 'Etes-vous sûr ?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Créer un nouveau programme', new_programme_path %>

@@ -10,6 +10,14 @@
 #  encrypted_password :string
 #  salt               :string
 #  admin              :boolean          default(FALSE)
+#  prenom             :string
+#  civilite           :string
+#  profil             :string
+#  societe_id         :integer
+#  adresse            :string
+#  code_postal        :string
+#  ville              :string
+#  telephone          :string
 #
 
 require 'digest'
@@ -18,6 +26,7 @@ class User < ApplicationRecord
 attr_accessor :password
 
 belongs_to :societe, optional: true
+has_many :programmes, :class_name => 'Programme', :foreign_key => 'responsable_id'
 
 email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titre:</strong>
+  <%= @programme.titre %>
+</p>
+
+<p>
+  <strong>Date de début:</strong>
+  <%= I18n.l @programme.date_debut %>
+</p>
+
+<p>
+  <strong>Date de fin:</strong>
+  <%= I18n.l @programme.date_fin %>
+</p>
+
+<p>
+  <strong>Responsable:</strong>
+    <%
+    resp = @programme.responsable
+    resp_txt = resp.civilite + " " + resp.nom + " " + resp.prenom
+    %>
+  <%= resp_txt %>
+</p>
+
+<%= link_to 'Modifier', edit_programme_path(@programme) %> |
+<%= link_to 'Retour', :back %>

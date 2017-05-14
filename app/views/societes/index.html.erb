@@ -22,7 +22,7 @@
         <td><%= societe.telephone %></td>
         <td><%= link_to 'Voir', societe %></td>
         <td><%= link_to 'Modifier', edit_societe_path(societe) %></td>
-        <td><%= link_to 'Détruire', societe, method: :delete, data: { confirm: 'Etes vous sûr ?' } %></td>
+        <td><%= link_to 'Supprimer', societe, method: :delete, data: { confirm: 'Etes vous sûr ?' } %></td>
       </tr>
     <% end %>
   </tbody>

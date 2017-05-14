@@ -10,6 +10,14 @@
 #  encrypted_password :string
 #  salt               :string
 #  admin              :boolean          default(FALSE)
+#  prenom             :string
+#  civilite           :string
+#  profil             :string
+#  societe_id         :integer
+#  adresse            :string
+#  code_postal        :string
+#  ville              :string
+#  telephone          :string
 #
 
 require 'rails_helper'

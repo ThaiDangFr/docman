@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :programmes
   resources :societes
   resources :users
 	resources :sessions, :only => [:new, :create, :destroy]
