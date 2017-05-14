@@ -7,7 +7,7 @@ module ApplicationHelper
 
     # retoune un titre base sur la page
     def titre
-        base_titre = "Simple App du Tutoriel Ruby on Rails"
+        base_titre = "Document Manager"
         if @titre.nil?
             base_titre
         else

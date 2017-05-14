@@ -15,7 +15,7 @@ RSpec.describe SessionsController, type: :controller do
 
         it "devrait avoir le bon titre" do
             get :new
-            expect(response.body).to have_selector('title', text: "Simple App du Tutoriel Ruby on Rails | S'identifier", visible: false)
+            expect(response.body).to have_selector('title', text: "Document Manager | S'identifier", visible: false)
         end
     end
 
@@ -32,7 +32,7 @@ RSpec.describe SessionsController, type: :controller do
 
             it "devrait avoir le bon titre" do
                 post :create, params: {session: @attr}
-                expect(response.body).to have_selector("title", text: "Simple App du Tutoriel Ruby on Rails | S'identifier", visible: false)
+                expect(response.body).to have_selector("title", text: "Document Manager | S'identifier", visible: false)
             end
 
             it "devrait avoir un message flash.now" do

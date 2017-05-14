@@ -31,7 +31,7 @@ RSpec.describe UsersController, type: :controller do
 
             it "devrait avoir le bon titre" do
                 get :index
-                expect(response.body).to have_selector("title", text: "Simple App du Tutoriel Ruby on Rails | Tous les utilisateurs", visible:false)
+                expect(response.body).to have_selector("title", text: "Document Manager | Tous les utilisateurs", visible:false)
             end
 
             it "devrait avoir un élément pour chaque utilisateur" do

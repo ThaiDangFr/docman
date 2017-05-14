@@ -12,7 +12,7 @@ RSpec.describe PagesController, type: :controller do
 
         it "devrait avoir le bon titre" do
             get :home
-            expect(response.body).to have_selector('title', text: 'Simple App du Tutoriel Ruby on Rails | Accueil', visible: false)
+            expect(response.body).to have_selector('title', text: 'Document Manager | Accueil', visible: false)
         end
     end
 
@@ -24,7 +24,7 @@ RSpec.describe PagesController, type: :controller do
 
         it "devrait avoir le bon titre" do
             get :contact
-            expect(response.body).to have_selector('title', text: 'Simple App du Tutoriel Ruby on Rails | Contact', visible:false)
+            expect(response.body).to have_selector('title', text: 'Document Manager | Contact', visible:false)
         end
     end
 
@@ -36,7 +36,7 @@ RSpec.describe PagesController, type: :controller do
 
         it "devrait avoir le bon titre" do
             get :about
-            expect(response.body).to have_selector('title', text: 'Simple App du Tutoriel Ruby on Rails | A propos', visible: false)
+            expect(response.body).to have_selector('title', text: 'Document Manager | A propos', visible: false)
         end
     end
 
