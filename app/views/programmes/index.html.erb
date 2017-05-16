@@ -22,7 +22,7 @@
     
         <%
             resp = programme.responsable
-            resp_txt = resp.civilite + " " + resp.nom + " " + resp.prenom
+            resp_txt = "#{resp.civilite}  #{resp.nom} #{resp.prenom}"
         %>
         <td><%= resp_txt %></td>
         <td><%= link_to 'Voir', programme %></td>
