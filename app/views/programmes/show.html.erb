@@ -19,10 +19,19 @@
   <strong>Responsable:</strong>
     <%
     resp = @programme.responsable
-    resp_txt = resp.civilite + " " + resp.nom + " " + resp.prenom
+    resp_txt = "#{resp.civilite} #{resp.nom} #{resp.prenom}"
     %>
   <%= resp_txt %>
 </p>
+
+<p>
+    <strong>Documents associés:</strong>
+    <% @programme.documents.each do |p| %>
+    [<%= link_to "#{p.path.split('/').last}", p.url %>]
+
+    <% end %>
+</p>
+
 
 <%= link_to 'Modifier', edit_programme_path(@programme) %> |
 <%= link_to 'Retour', programmes_path %>

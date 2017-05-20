@@ -21,7 +21,24 @@
     <%= f.select :responsable_id, User.where(:profil => "médecin référent").collect { |p| ["#{p.civilite} #{p.nom} #{p.prenom}", "#{p.id}"]} %>
   </div>
 
+    <div class="field">
+        <%= f.label "Ajouter des documents" %><br/>
+        <%= f.file_field :documents, multiple: true %>
+    </div>
+
+
   <div class="actions">
     <%= f.submit "Enregistrer" %>
   </div>
+
+    <% if programme.documents.count != 0 %>
+    <br/>
+    <div class="field">
+        <%= f.label "Documents actuellement associés" %><br/>
+        <% programme.documents.each_with_index do |p,i| %>
+        <%= link_to "X", "edit?rm_index=#{i}" %> <%= "#{p.path.split('/').last}" %><br/>
+        <% end %>
+    </div>
+    <% end %>
+
 <% end %>

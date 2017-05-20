@@ -51,9 +51,9 @@ RSpec.describe UsersController, type: :controller do
             it "devrait paginer les utilisateurs" do
                 get :index
                 expect(response.body).to have_selector("div.pagination")
-                expect(response.body).to have_selector("span.disabled", :text => "Previous")
+                expect(response.body).to have_selector("span.disabled", :text => "Précédent")
                 expect(response.body).to have_link("2", :href => "/users?page=2")
-                expect(response.body).to have_link("Next", :href => "/users?page=2")
+                expect(response.body).to have_link("Suivant", :href => "/users?page=2")
             end
 
         end

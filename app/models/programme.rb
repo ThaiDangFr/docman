@@ -12,5 +12,6 @@
 #
 
 class Programme < ApplicationRecord
-  belongs_to :responsable, :class_name => 'User'
+    belongs_to :responsable, :class_name => 'User'
+    mount_uploaders :documents, DocumentUploader
 end

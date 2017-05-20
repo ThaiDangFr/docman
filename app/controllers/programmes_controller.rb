@@ -21,6 +21,21 @@ class ProgrammesController < ApplicationController
 
   # GET /programmes/1/edit
   def edit
+    rm_index = params[:rm_index]
+
+    if !rm_index.nil?
+        d = @programme.documents
+        d.delete_at(rm_index.to_i)
+
+        if d.count == 0
+        @programme.remove_documents!
+        @programme.save
+        else
+        @programme.documents = d
+        @programme.save
+        end
+    end
+
   end
 
   # POST /programmes
@@ -71,7 +86,7 @@ class ProgrammesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def programme_params
-      params.require(:programme).permit(:titre, :date_debut, :date_fin, :responsable_id)
+      params.require(:programme).permit(:titre, :date_debut, :date_fin, :responsable_id, {documents: []})
     end
 
     def admin_user
