@@ -1,6 +1,7 @@
 class DocumentsController < ApplicationController
     before_action :set_programme
-
+    before_action :authenticate
+    before_action :admin_user
 
     def create
         add_more_documents(documents_params[:documents])
@@ -15,6 +16,14 @@ class DocumentsController < ApplicationController
     end
 
     private
+
+    def admin_user
+        redirect_to(root_path) unless current_user.admin?
+    end
+
+    def authenticate
+        deny_access unless signed_in?
+    end
 
     def set_programme
         @programme = Programme.find(params[:programme_id])
