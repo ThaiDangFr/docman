@@ -21,24 +21,35 @@
     <%= f.select :responsable_id, User.where(:profil => "médecin référent").collect { |p| ["#{p.civilite} #{p.nom} #{p.prenom}", "#{p.id}"]} %>
   </div>
 
-    <div class="field">
-        <%= f.label "Ajouter des documents" %><br/>
-        <%= f.file_field :documents, multiple: true %>
-    </div>
 
 
   <div class="actions">
     <%= f.submit "Enregistrer" %>
   </div>
 
+<hr/>
+
+
     <% if programme.documents.count != 0 %>
     <br/>
     <div class="field">
-        <%= f.label "Documents actuellement associés" %><br/>
+        <%= f.label "Documents types associés" %><br/>
         <% programme.documents.each_with_index do |p,i| %>
-        <%= link_to "X", "edit?rm_index=#{i}" %> <%= "#{p.path.split('/').last}" %><br/>
+        <%= link_to "#{p.path.split('/').last}", p.url, target: "_blank" %> <%= link_to "(supprimer)", programme_document_path(@programme, i), :method => :delete, data: {confirm: "Etes-vous certain de supprimer ?" } %><br/>
         <% end %>
     </div>
     <% end %>
 
 <% end %>
+
+<%= form_for @programme, url: programme_documents_path(@programme), method: :post do |f| %>
+    <div class="field">
+        <%= f.label "Ajouter des documents types" %><br/>
+        <%= f.file_field :documents, multiple: true %>
+    </div>
+    <div class="actions">
+        <%= f.submit "Ajouter" %>
+    </div>
+<% end %>
+
+
