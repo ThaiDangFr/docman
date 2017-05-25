@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :dmsessions
     resources :programmes do
         resources :documents, :only => [:create, :destroy]
     end

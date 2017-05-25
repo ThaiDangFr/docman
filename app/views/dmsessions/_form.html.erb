@@ -1,0 +1,52 @@
+<%= form_for(dmsession) do |f| %>
+  <% if dmsession.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dmsession.errors.count, "error") %> prohibited this dmsession from being saved:</h2>
+
+      <ul>
+      <% dmsession.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :titre %>
+    <%= f.text_field :titre %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_debut %>
+    <%= f.datetime_select :date_debut %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_fin %>
+    <%= f.datetime_select :date_fin %>
+  </div>
+
+  <div class="field">
+    <%= f.label :programme_id %>
+    <%= f.text_field :programme_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :responsable_id %>
+    <%= f.text_field :responsable_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :medecin_referent_id %>
+    <%= f.text_field :medecin_referent_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

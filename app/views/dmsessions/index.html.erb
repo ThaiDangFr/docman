@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Dmsessions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Date debut</th>
+      <th>Date fin</th>
+      <th>Programme</th>
+      <th>Responsable</th>
+      <th>Medecin referent</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dmsessions.each do |dmsession| %>
+      <tr>
+        <td><%= dmsession.titre %></td>
+        <td><%= dmsession.date_debut %></td>
+        <td><%= dmsession.date_fin %></td>
+        <td><%= dmsession.programme %></td>
+        <td><%= dmsession.responsable %></td>
+        <td><%= dmsession.medecin_referent %></td>
+        <td><%= dmsession.description %></td>
+        <td><%= link_to 'Show', dmsession %></td>
+        <td><%= link_to 'Edit', edit_dmsession_path(dmsession) %></td>
+        <td><%= link_to 'Destroy', dmsession, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dmsession', new_dmsession_path %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titre:</strong>
+  <%= @dmsession.titre %>
+</p>
+
+<p>
+  <strong>Date debut:</strong>
+  <%= @dmsession.date_debut %>
+</p>
+
+<p>
+  <strong>Date fin:</strong>
+  <%= @dmsession.date_fin %>
+</p>
+
+<p>
+  <strong>Programme:</strong>
+  <%= @dmsession.programme %>
+</p>
+
+<p>
+  <strong>Responsable:</strong>
+  <%= @dmsession.responsable %>
+</p>
+
+<p>
+  <strong>Medecin referent:</strong>
+  <%= @dmsession.medecin_referent %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @dmsession.description %>
+</p>
+
+<%= link_to 'Edit', edit_dmsession_path(@dmsession) %> |
+<%= link_to 'Back', dmsessions_path %>

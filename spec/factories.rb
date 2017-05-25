@@ -28,4 +28,21 @@ FactoryGirl.define do
     sequence :email do |n|
         "person-#{n}@example.com"
     end
+
+    factory :programme do
+        titre "prog 1"
+        date_debut "2017-02-20 13:23:40"
+        date_fin "2017-02-21 13:23:46"
+        association :responsable, factory: :user 
+    end
+
+    factory :dmsession do
+        titre "session 1"
+        date_debut "2017-02-20 13:23:40"
+        date_fin "2017-02-22 13:23:46"
+        association :programme
+        association :responsable, factory: :user
+        association :medecin_referent, factory: :user
+        description "description de la session"
+    end 
 end

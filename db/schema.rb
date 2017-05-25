@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519222641) do
+ActiveRecord::Schema.define(version: 20170523121435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dmsessions", force: :cascade do |t|
+    t.string   "titre"
+    t.datetime "date_debut"
+    t.datetime "date_fin"
+    t.integer  "programme_id"
+    t.integer  "responsable_id"
+    t.integer  "medecin_referent_id"
+    t.string   "description"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["medecin_referent_id"], name: "index_dmsessions_on_medecin_referent_id", using: :btree
+    t.index ["programme_id"], name: "index_dmsessions_on_programme_id", using: :btree
+    t.index ["responsable_id"], name: "index_dmsessions_on_responsable_id", using: :btree
+  end
 
   create_table "documents", force: :cascade do |t|
     t.integer  "programme_id"
@@ -64,6 +79,7 @@ ActiveRecord::Schema.define(version: 20170519222641) do
     t.index ["societe_id"], name: "index_users_on_societe_id", using: :btree
   end
 
+  add_foreign_key "dmsessions", "programmes"
   add_foreign_key "documents", "programmes"
   add_foreign_key "users", "societes"
 end

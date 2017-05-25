@@ -27,6 +27,9 @@ attr_accessor :password
 
 belongs_to :societe, optional: true
 has_many :programmes, :class_name => 'Programme', :foreign_key => 'responsable_id'
+has_many :dmsessions, :class_name => 'Dmsessions', :foreign_key => 'responsable_id'
+has_many :dmsessions, :class_name => 'Dmsessions', :foreign_key => 'medecin_referent_id'
+
 
 email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
