@@ -18,4 +18,14 @@ class Dmsession < ApplicationRecord
   belongs_to :programme
   belongs_to :responsable, :class_name => 'User'
   belongs_to :medecin_referent, :class_name => 'User'
+  has_many :participants, :class_name => 'RelationDmsessionUser'
+
+    def adduser!(user)
+        participants.create!(:user_id => user.id)
+    end
+
+    def rmuser!(user)
+        participants.find_by_user_id(user.id).destroy
+    end
+
 end
