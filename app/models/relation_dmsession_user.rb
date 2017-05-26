@@ -10,6 +10,9 @@
 #
 
 class RelationDmsessionUser < ApplicationRecord
-  belongs_to :dmsession
-  belongs_to :user
+    belongs_to :dmsession
+    belongs_to :user
+
+    validates :dmsession_id, :presence => true
+    validates :user_id, :presence => true
 end
