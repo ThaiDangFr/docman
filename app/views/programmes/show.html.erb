@@ -17,11 +17,7 @@
 
 <p>
   <strong>Responsable:</strong>
-    <%
-    resp = @programme.responsable
-    resp_txt = "#{resp.civilite} #{resp.nom} #{resp.prenom}"
-    %>
-  <%= resp_txt %>
+  <%= @programme.responsable %>
 </p>
 
 <p>

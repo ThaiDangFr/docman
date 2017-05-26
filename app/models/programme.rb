@@ -16,4 +16,8 @@ class Programme < ApplicationRecord
     belongs_to :responsable, :class_name => 'User'
     mount_uploaders :documents, DocumentUploader
     has_many :dmsessions
+
+    def to_s
+        self.titre
+    end
 end

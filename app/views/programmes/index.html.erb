@@ -20,11 +20,7 @@
         <td><%= I18n.l programme.date_debut unless programme.date_debut.nil? %></td>
         <td><%= I18n.l programme.date_fin unless programme.date_fin.nil? %></td>
     
-        <%
-            resp = programme.responsable
-            resp_txt = "#{resp.civilite}  #{resp.nom} #{resp.prenom}"
-        %>
-        <td><%= resp_txt %></td>
+        <td><%=  programme.responsable %></td>
         <td><%= link_to 'Voir', programme %></td>
         <td><%= link_to 'Modifier', edit_programme_path(programme) %></td>
         <td><%= link_to 'Supprimer', programme, method: :delete, data: { confirm: 'Etes-vous sûr ?' } %></td>

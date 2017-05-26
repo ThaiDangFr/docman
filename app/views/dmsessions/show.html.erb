@@ -6,18 +6,18 @@
 </p>
 
 <p>
-  <strong>Date debut:</strong>
-  <%= @dmsession.date_debut %>
+  <strong>Date de début:</strong>
+  <%= I18n.l @dmsession.date_debut %>
 </p>
 
 <p>
-  <strong>Date fin:</strong>
-  <%= @dmsession.date_fin %>
+  <strong>Date de fin:</strong>
+  <%= I18n.l @dmsession.date_fin %>
 </p>
 
 <p>
   <strong>Programme:</strong>
-  <%= @dmsession.programme %>
+  <%= @dmsession.programme.titre unless @dmsession.programme.nil? %>
 </p>
 
 <p>
@@ -35,5 +35,5 @@
   <%= @dmsession.description %>
 </p>
 
-<%= link_to 'Edit', edit_dmsession_path(@dmsession) %> |
-<%= link_to 'Back', dmsessions_path %>
+<%= link_to 'Modifier', edit_dmsession_path(@dmsession) %> |
+<%= link_to 'Retour', dmsessions_path %>

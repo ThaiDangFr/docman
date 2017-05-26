@@ -65,7 +65,9 @@ before_save :encrypt_password
         (user && user.salt == cookie_salt) ? user : nil
     end
 
-
+    def to_s
+        "#{self.civilite} #{self.nom} #{self.prenom}"
+    end
 
 
     private

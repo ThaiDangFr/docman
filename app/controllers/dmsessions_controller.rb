@@ -30,7 +30,7 @@ class DmsessionsController < ApplicationController
 
     respond_to do |format|
       if @dmsession.save
-        format.html { redirect_to @dmsession, notice: 'Dmsession was successfully created.' }
+        format.html { redirect_to @dmsession, success: 'La session a été créée.' }
         format.json { render :show, status: :created, location: @dmsession }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class DmsessionsController < ApplicationController
   def update
     respond_to do |format|
       if @dmsession.update(dmsession_params)
-        format.html { redirect_to @dmsession, notice: 'Dmsession was successfully updated.' }
+        format.html { redirect_to @dmsession, success: 'La session a été mise à jour.' }
         format.json { render :show, status: :ok, location: @dmsession }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class DmsessionsController < ApplicationController
   def destroy
     @dmsession.destroy
     respond_to do |format|
-      format.html { redirect_to dmsessions_url, notice: 'Dmsession was successfully destroyed.' }
+      format.html { redirect_to dmsessions_url, success: 'La session a été suprimée.' }
       format.json { head :no_content }
     end
   end

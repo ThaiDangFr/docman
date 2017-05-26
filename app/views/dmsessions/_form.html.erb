@@ -1,15 +1,6 @@
 <%= form_for(dmsession) do |f| %>
-  <% if dmsession.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(dmsession.errors.count, "error") %> prohibited this dmsession from being saved:</h2>
+<%= render 'shared/error_messages', :object => f.object %>
 
-      <ul>
-      <% dmsession.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= f.label :titre %>
@@ -17,28 +8,28 @@
   </div>
 
   <div class="field">
-    <%= f.label :date_debut %>
+    <%= f.label :date_debut, "Date de début" %>
     <%= f.datetime_select :date_debut %>
   </div>
 
   <div class="field">
-    <%= f.label :date_fin %>
+    <%= f.label :date_fin, "Date de fin" %>
     <%= f.datetime_select :date_fin %>
   </div>
 
   <div class="field">
     <%= f.label :programme_id %>
-    <%= f.text_field :programme_id %>
+    <%= f.select :programme_id, Programme.all.collect { |p| [p, "#{p.id}"]} %>
   </div>
 
   <div class="field">
     <%= f.label :responsable_id %>
-    <%= f.text_field :responsable_id %>
+    <%= f.select :responsable_id, User.all.collect { |p| [p, "#{p.id}"]} %>
   </div>
 
   <div class="field">
-    <%= f.label :medecin_referent_id %>
-    <%= f.text_field :medecin_referent_id %>
+    <%= f.label :medecin_referent_id, "Médecin référent" %>
+    <%= f.select :medecin_referent_id,  User.where(:profil => "médecin référent").collect { |p| [p, "#{p.id}"]} %>
   </div>
 
   <div class="field">
@@ -47,6 +38,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Enregistrer" %>
   </div>
 <% end %>

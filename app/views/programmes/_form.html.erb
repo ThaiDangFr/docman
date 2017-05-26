@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= f.label :responsable_id %><br/>
-    <%= f.select :responsable_id, User.where(:profil => "médecin référent").collect { |p| ["#{p.civilite} #{p.nom} #{p.prenom}", "#{p.id}"]} %>
+    <%= f.select :responsable_id, User.all.collect { |p| [p, "#{p.id}"]} %>
   </div>
 
 
