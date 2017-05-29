@@ -29,7 +29,7 @@ class DmsessionsController < ApplicationController
     @dmsession = Dmsession.new(dmsession_params)
 
     respond_to do |format|
-      if @dmsession.save
+      if @dmsession.save && @dmsession.updateparticipant_by_ids!(params[:dmsession][:participant_ids])
         format.html { redirect_to @dmsession, success: 'La session a été créée.' }
         format.json { render :show, status: :created, location: @dmsession }
       else
@@ -43,7 +43,8 @@ class DmsessionsController < ApplicationController
   # PATCH/PUT /dmsessions/1.json
   def update
     respond_to do |format|
-      if @dmsession.update(dmsession_params)
+      if @dmsession.update(dmsession_params) && @dmsession.updateparticipant_by_ids!(params[:dmsession][:participant_ids]) 
+    
         format.html { redirect_to @dmsession, success: 'La session a été mise à jour.' }
         format.json { render :show, status: :ok, location: @dmsession }
       else
@@ -72,6 +73,7 @@ class DmsessionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def dmsession_params
       params.require(:dmsession).permit(:titre, :date_debut, :date_fin, :programme_id, :responsable_id, :medecin_referent_id, :description)
+      #params.require(:dmsession).permit!
     end
 
     def admin_user

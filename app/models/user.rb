@@ -29,7 +29,9 @@ belongs_to :societe, optional: true
 has_many :programmes, :class_name => 'Programme', :foreign_key => 'responsable_id'
 has_many :responsable_des_sessions, :class_name => 'Dmsession', :foreign_key => 'responsable_id'
 has_many :medecin_referent_des_sessions, :class_name => 'Dmsession', :foreign_key => 'medecin_referent_id'
-has_many :participant_des_sessions, :class_name => 'RelationDmsessionUser'
+has_many :relation_dmsession_users, :foreign_key => "user_id", :dependent => :destroy
+has_many :participant_des_sessions, :through => :relation_dmsession_users, :source => :dmsession
+
 
 
 email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

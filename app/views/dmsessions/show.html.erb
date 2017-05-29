@@ -35,5 +35,12 @@
   <%= @dmsession.description %>
 </p>
 
+<p>
+    <strong>Participants:</strong><br/>
+    <% @dmsession.participants.each do |p| %>
+    <%= p %><br/>
+    <% end %>
+</p>
+
 <%= link_to 'Modifier', edit_dmsession_path(@dmsession) %> |
 <%= link_to 'Retour', dmsessions_path %>

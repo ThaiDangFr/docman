@@ -37,36 +37,18 @@
     <%= f.text_field :description %>
   </div>
 
+    <div class="field">
+        <%= f.label :participants %><br/>
+        <% User.all.each do |user| %>
+        <%= f.check_box :participant_ids, {:multiple => true}, user.id, nil %> <%= user %><br/>
+        <% end %>
+    </div>
+
+
+
   <div class="actions">
     <%= f.submit "Enregistrer" %>
   </div>
 
-    <hr/>
-
-    <% if dmsession.participants.count != 0 %>
-        <br/>
-        <div class="field">
-            <%= f.label "Liste des participants" %><br/>
-            <% dmsession.participants.each do |p| %>
-                <%= "#{p.user}" %> <%= link_to "(supprimer)", dmsession_participant_path(@dmsession, p.user), :method => :delete, data: {confirm: "Etes-vous certain de supprimer ?"} %><br/>
-            <% end %>
-        </div>
-    <% end %>
-
 
 <% end %>
-
-
-<% if !dmsession.id.nil? %>
-    <%= form_for dmsession, url: dmsession_participants_path(dmsession), method: :post do |f| %>
-        <div class="field">
-            <%= f.label "Ajouter un participant" %><br/>
-            <%= f.select :participants, User.all.collect {|p| [p, "#{p.id}"]} %>
-        </div>
-        <div class="actions">
-            <%= f.submit "Ajouter" %>
-        </div>
-    <% end %>
-<% end %>
-
-
