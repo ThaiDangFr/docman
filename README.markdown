@@ -1,5 +1,5 @@
-# Application basique
+# Document Manager (docman) 
 
-Application basique avec une gestion de l'authentification, des privilèges administrateurs, des tests rspec.
+Gestionnaire de groupe de travail organisé sous forme de : programme >> session >> réunion
 
-L'objectif est d'être un point de départ pour une application en rails 5.
+Ecrit en Rails 5
