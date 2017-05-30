@@ -36,6 +36,14 @@
 </p>
 
 <p>
+    <strong>Documents:</strong><br/>
+    <% @dmsession.documents.each do |p| %>
+    <%= link_to "#{p.path.split('/').last}", p.url, target: "_blank" %><br/>
+
+    <% end %>
+</p>
+
+<p>
     <strong>Participants:</strong><br/>
     <% @dmsession.participants.each do |p| %>
     <%= p %><br/>

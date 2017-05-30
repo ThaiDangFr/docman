@@ -20,7 +20,7 @@ class Dmsession < ApplicationRecord
     belongs_to :medecin_referent, :class_name => 'User'
     has_many :relation_dmsession_users, :foreign_key => "dmsession_id", :dependent => :destroy
     has_many :participants, :through => :relation_dmsession_users, :source => :user
-    
+    mount_uploaders :documents, DocumentUploader    
 
     def updateparticipant_by_ids!(uids)
         puts "uids=#{uids}"
