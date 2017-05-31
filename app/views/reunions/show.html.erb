@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titre:</strong>
+  <%= @reunion.titre %>
+</p>
+
+<p>
+  <strong>Date de début:</strong>
+  <%= I18n.l @reunion.date_debut %>
+</p>
+
+<p>
+  <strong>Lieu:</strong>
+  <%= @reunion.lieu %>
+</p>
+
+<p>
+  <strong>Ordre du jour:</strong>
+  <%= @reunion.ordre_du_jour %>
+</p>
+
+<p>
+  <strong>Dmsession:</strong>
+  <%= @reunion.dmsession.titre unless @reunion.dmsession.nil? %>
+</p>
+
+<%= link_to 'Modifier', edit_reunion_path(@reunion) %> |
+<%= link_to 'Retour', reunions_path %>

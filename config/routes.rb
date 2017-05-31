@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reunions
     resources :dmsessions do
         resources :documents, :only => [:create, :destroy]
     end

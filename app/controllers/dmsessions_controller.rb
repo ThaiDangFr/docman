@@ -59,7 +59,7 @@ class DmsessionsController < ApplicationController
   def destroy
     @dmsession.destroy
     respond_to do |format|
-      format.html { redirect_to dmsessions_url, success: 'La session a été suprimée.' }
+      format.html { redirect_to dmsessions_url, success: 'La session a été supprimée.' }
       format.json { head :no_content }
     end
   end

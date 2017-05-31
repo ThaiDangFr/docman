@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Réunions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Date de début</th>
+      <th>Lieu</th>
+      <th>Ordre du jour</th>
+      <th>Session</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reunions.each do |reunion| %>
+      <tr>
+        <td><%= reunion.titre %></td>
+        <td><%= I18n.l reunion.date_debut %></td>
+        <td><%= reunion.lieu %></td>
+        <td><%= reunion.ordre_du_jour %></td>
+        <td><%= reunion.dmsession.titre unless reunion.dmsession.nil? %></td>
+        <td><%= link_to 'Voir', reunion %></td>
+        <td><%= link_to 'Modifier', edit_reunion_path(reunion) %></td>
+        <td><%= link_to 'Supprimer', reunion, method: :delete, data: { confirm: 'Etes-vous sûr ?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Créer une nouvelle réunion', new_reunion_path %>

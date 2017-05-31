@@ -1,0 +1,32 @@
+<%= form_for(reunion) do |f| %>
+<%= render 'shared/error_messages', :object => f.object %>
+
+  <div class="field">
+    <%= f.label :titre %>
+    <%= f.text_field :titre %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_debut, "Date de début" %>
+    <%= f.datetime_select :date_debut %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lieu %>
+    <%= f.text_field :lieu %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ordre_du_jour %>
+    <%= f.text_field :ordre_du_jour %>
+  </div>
+
+  <div class="field">
+    <%= f.label :dmsession_id %>
+    <%= f.select :dmsession_id, Dmsession.all.collect { |p| [p.titre, "#{p.id}"] } %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Enregistrer" %>
+  </div>
+<% end %>

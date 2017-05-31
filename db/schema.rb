@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530143409) do
+ActiveRecord::Schema.define(version: 20170531140259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,17 @@ ActiveRecord::Schema.define(version: 20170530143409) do
     t.index ["user_id"], name: "index_relation_dmsession_users_on_user_id", using: :btree
   end
 
+  create_table "reunions", force: :cascade do |t|
+    t.string   "titre"
+    t.datetime "date_debut"
+    t.string   "lieu"
+    t.string   "ordre_du_jour"
+    t.integer  "dmsession_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["dmsession_id"], name: "index_reunions_on_dmsession_id", using: :btree
+  end
+
   create_table "societes", force: :cascade do |t|
     t.string   "raison_sociale"
     t.string   "adresse"
@@ -93,5 +104,6 @@ ActiveRecord::Schema.define(version: 20170530143409) do
   add_foreign_key "documents", "programmes"
   add_foreign_key "relation_dmsession_users", "dmsessions"
   add_foreign_key "relation_dmsession_users", "users"
+  add_foreign_key "reunions", "dmsessions"
   add_foreign_key "users", "societes"
 end

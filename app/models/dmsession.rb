@@ -12,6 +12,7 @@
 #  description         :string
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  documents           :json
 #
 
 class Dmsession < ApplicationRecord
@@ -21,6 +22,7 @@ class Dmsession < ApplicationRecord
     has_many :relation_dmsession_users, :foreign_key => "dmsession_id", :dependent => :destroy
     has_many :participants, :through => :relation_dmsession_users, :source => :user
     mount_uploaders :documents, DocumentUploader    
+    has_many :reunions
 
     def updateparticipant_by_ids!(uids)
         puts "uids=#{uids}"
