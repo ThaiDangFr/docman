@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :reunions
+    resources :reunions do
+        resources :presences, :only => [:create, :index]
+    end
+
     resources :dmsessions do
         resources :documents, :only => [:create, :destroy]
     end

@@ -3,6 +3,7 @@ class ReunionsController < ApplicationController
     before_action :authenticate
     before_action :admin_user
 
+
   # GET /reunions
   # GET /reunions.json
   def index

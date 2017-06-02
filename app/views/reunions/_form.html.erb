@@ -22,7 +22,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :dmsession_id %>
+    <%= f.label :dmsession_id, "Session" %>
     <%= f.select :dmsession_id, Dmsession.all.collect { |p| [p.titre, "#{p.id}"] } %>
   </div>
 

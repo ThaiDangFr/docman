@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170531140259) do
+ActiveRecord::Schema.define(version: 20170601134510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 20170531140259) do
     t.index ["user_id"], name: "index_relation_dmsession_users_on_user_id", using: :btree
   end
 
+  create_table "relation_reunion_users", force: :cascade do |t|
+    t.integer  "reunion_id"
+    t.integer  "user_id"
+    t.string   "user_role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reunion_id"], name: "index_relation_reunion_users_on_reunion_id", using: :btree
+    t.index ["user_id"], name: "index_relation_reunion_users_on_user_id", using: :btree
+  end
+
   create_table "reunions", force: :cascade do |t|
     t.string   "titre"
     t.datetime "date_debut"
@@ -104,6 +114,8 @@ ActiveRecord::Schema.define(version: 20170531140259) do
   add_foreign_key "documents", "programmes"
   add_foreign_key "relation_dmsession_users", "dmsessions"
   add_foreign_key "relation_dmsession_users", "users"
+  add_foreign_key "relation_reunion_users", "reunions"
+  add_foreign_key "relation_reunion_users", "users"
   add_foreign_key "reunions", "dmsessions"
   add_foreign_key "users", "societes"
 end

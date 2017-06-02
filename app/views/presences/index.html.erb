@@ -1,0 +1,16 @@
+<%= form_for @reunion, url: reunion_presences_path(@reunion), method: :post do |f| %>
+    <%= render 'shared/error_messages', :object => f.object %>
+
+    <div class="field">
+        <%= f.label "Cocher les participants présents" %><br>
+        <% @tous_les_participants.each do |user| %>
+            <%= f.check_box :present_ids, {:multiple => true}, user.id, nil %> <%= user %><br/>
+        <% end %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit "Enregistrer" %>
+    </div>
+<% end %>
+
+<%= link_to 'Retour', reunions_path %>

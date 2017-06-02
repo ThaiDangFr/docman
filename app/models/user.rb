@@ -31,6 +31,8 @@ has_many :responsable_des_sessions, :class_name => 'Dmsession', :foreign_key => 
 has_many :medecin_referent_des_sessions, :class_name => 'Dmsession', :foreign_key => 'medecin_referent_id'
 has_many :relation_dmsession_users, :foreign_key => "user_id", :dependent => :destroy
 has_many :participant_des_sessions, :through => :relation_dmsession_users, :source => :dmsession
+has_many :relation_reunion_users, :foreign_key => "user_id", :dependent => :destroy
+has_many :present_des_reunions, :through => :relation_reunion_users, :source => :reunion
 
 
 
