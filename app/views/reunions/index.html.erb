@@ -22,7 +22,7 @@
         <td><%= reunion.lieu %></td>
         <td><%= reunion.ordre_du_jour %></td>
         <td><%= reunion.dmsession.titre unless reunion.dmsession.nil? %></td>
-        <td><%= link_to 'Gérer les présences', reunion_presences_path(reunion) %></td>
+        <td><%= link_to 'Gérer les présences', reunion_presences_path(reunion) %> (<%= reunion.count_presents %>)</td>
         <td><%= link_to 'Voir', reunion %></td>
         <td><%= link_to 'Modifier', edit_reunion_path(reunion) %></td>
         <td><%= link_to 'Supprimer', reunion, method: :delete, data: { confirm: 'Etes-vous sûr ?' } %></td>
