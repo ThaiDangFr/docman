@@ -26,6 +26,14 @@
 </p>
 
 <p>
+    <strong>Documents:</strong><br/>
+    <% @reunion.documents.each do |p| %>
+        <%= link_to "#{p.path.split('/').last}", p.url, target: "_blank" %><br/>
+    <% end %>
+
+</p>
+
+<p>
     <strong>Personnes présentes:</strong><br/>
     <% @reunion.presents.each do |p| %>
     <% role = @reunion.getrole(p.id) %>

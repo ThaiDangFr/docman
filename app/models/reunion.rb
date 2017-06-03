@@ -16,7 +16,7 @@ class Reunion < ApplicationRecord
     belongs_to :dmsession
     has_many :relation_reunion_users, :foreign_key => "reunion_id", :dependent => :destroy
     has_many :presents, :through => :relation_reunion_users, :source => :user
-
+    mount_uploaders :documents, DocumentUploader
 
     def count_presents
         presents.count

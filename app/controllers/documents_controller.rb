@@ -30,6 +30,8 @@ class DocumentsController < ApplicationController
             @objectdm = Programme.find(params[:programme_id])
         elsif !params[:dmsession_id].nil?
             @objectdm = Dmsession.find(params[:dmsession_id])
+        elsif !params[:reunion_id].nil?
+            @objectdm = Reunion.find(params[:reunion_id])
         end
     end
 
@@ -57,6 +59,8 @@ class DocumentsController < ApplicationController
             params.require(:programme).permit({documents: []})
         elsif !params[:dmsession_id].nil?
             params.require(:dmsession).permit({documents: []})
+        elsif !params[:reunion_id].nil?
+            params.require(:reunion).permit({documents: []})
         end
     end
 

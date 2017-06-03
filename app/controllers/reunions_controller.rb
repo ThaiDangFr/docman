@@ -72,7 +72,7 @@ class ReunionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reunion_params
-      params.require(:reunion).permit(:titre, :date_debut, :lieu, :ordre_du_jour, :dmsession_id)
+      params.require(:reunion).permit(:titre, :date_debut, :lieu, :ordre_du_jour, :dmsession_id, {documents: []})
     end
 
     def admin_user

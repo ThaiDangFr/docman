@@ -2,6 +2,7 @@ Rails.application.routes.draw do
     resources :reunions do
         resources :presences, :only => [:create, :index]
         resources :roles, :only => [:index, :update]
+        resources :documents, :only => [:create, :destroy]
     end
 
     resources :dmsessions do

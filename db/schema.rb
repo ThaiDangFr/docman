@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170601134510) do
+ActiveRecord::Schema.define(version: 20170603221330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20170601134510) do
     t.integer  "dmsession_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.json     "documents"
     t.index ["dmsession_id"], name: "index_reunions_on_dmsession_id", using: :btree
   end
 
