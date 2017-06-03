@@ -11,7 +11,7 @@ class RolesController < ApplicationController
     def update
         respond_to do |format|
             if @reunion.setrole!(params[:id], params[:relation_reunion_user][:user_role])
-                format.html { redirect_to @reunion, success: 'Le rôle a été mis à jour.' }
+                format.html { redirect_to reunion_roles_path(@reunion), success: 'Le rôle a été mis à jour.' }
                 format.json { render :show, status: :ok, location: @programme }
             else
                 format.html { render :index }

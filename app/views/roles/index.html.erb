@@ -1,11 +1,13 @@
+<%= render 'shared/error_messages', :object => @reunion %>
+
 <% @relation_reunion_users.each do |rru| %>
     <%= form_for rru, url: reunion_role_path(@reunion,rru.user), method: :patch do |f| %>
-        <%= render 'shared/error_messages', :object => f.object %>
 
         <div class="field">
-            <%= rru.user %> <%= f.select :user_role, RelationReunionUser::ROLES.collect { |p| [p, p]} %> <%= f.submit "Enregistrer" %>
+            <%= rru.user %> <%= f.select :user_role, RelationReunionUser::ROLES.collect { |p| [p, p]}, { selected: rru.user_role}, { onchange: "this.form.submit();"} %>
         </div>
-    
+
+ 
     <% end %>
 <% end %>
 
