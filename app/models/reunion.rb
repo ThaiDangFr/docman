@@ -20,13 +20,34 @@ class Reunion < ApplicationRecord
     def count_presents
         presents.count
     end
+    
+    def count_participants
+        dmsession.participants.count
+    end
 
-    def updatepresents_by_ids!(uids)
-        puts "uids=#{uids}"
-        relation_reunion_users.destroy_all
+
+    def updatepresents_by_ids!(suids)
+
+        #converti ["1","2","3"] en [1,2,3]
+        uids = suids.map(&:to_i)
+        puts "uids = #{uids}"
+
+        relation_reunion_users.each do |rru|
+            if !rru.user_id.in? uids
+                puts "delete user_id #{rru.user_id}"
+                rru.destroy!
+            end
+        end unless relation_reunion_users.nil?
+
+        rruuids = relation_reunion_users.pluck(:user_id)
+
         uids.each do |uid|
-            addpresent_by_id!(uid)
+            if !uid.in? rruuids
+                puts "add user_id #{uid}"
+                addpresent_by_id!(uid)
+            end
         end unless uids.nil?
+
         return true
     end
 

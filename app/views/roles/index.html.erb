@@ -1,0 +1,14 @@
+<% @relation_reunion_users.each do |rru| %>
+    <%= form_for rru, url: reunion_role_path(@reunion,rru.user), method: :patch do |f| %>
+        <%= render 'shared/error_messages', :object => f.object %>
+
+        <div class="field">
+            <%= rru.user %> <%= f.text_field :user_role %> <%= f.submit "Enregistrer" %>
+        </div>
+    
+    <% end %>
+<% end %>
+
+
+
+<%= link_to 'Retour', reunions_path %>
