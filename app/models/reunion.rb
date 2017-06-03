@@ -59,8 +59,15 @@ class Reunion < ApplicationRecord
         relation_reunion_users.find_by_user_id(uid).destroy
     end
 
-    def setrole!(user_id, role)
+    def setrole!(user_id, srole)
         rru = relation_reunion_users.find_by_user_id(user_id)
+
+        if srole.empty?
+            role = nil
+        else
+            role = srole
+        end
+
         rru.user_role = role unless rru.nil?
         rru.save!
     end

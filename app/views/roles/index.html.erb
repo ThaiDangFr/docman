@@ -3,7 +3,7 @@
         <%= render 'shared/error_messages', :object => f.object %>
 
         <div class="field">
-            <%= rru.user %> <%= f.text_field :user_role %> <%= f.submit "Enregistrer" %>
+            <%= rru.user %> <%= f.select :user_role, RelationReunionUser::ROLES.collect { |p| [p, p]} %> <%= f.submit "Enregistrer" %>
         </div>
     
     <% end %>

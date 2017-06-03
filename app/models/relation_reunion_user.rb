@@ -16,4 +16,6 @@ class RelationReunionUser < ApplicationRecord
     validates_inclusion_of :user_role, :in => ['modérateur', 'secrétaire', nil]
     validates :reunion_id, :presence => true
     validates :user_id, :presence => true
+
+    ROLES = [nil, 'modérateur', 'secrétaire'].freeze
 end
