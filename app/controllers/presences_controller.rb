@@ -11,7 +11,7 @@ class PresencesController < ApplicationController
     def create
         respond_to do |format|
             if @reunion.updatepresents_by_ids!(params[:reunion][:present_ids])
-                format.html { redirect_to @reunion, success: 'Les personnes présentes ont été mises à jour.' }
+                format.html { redirect_to reunion_roles_path(@reunion), success: 'Les personnes présentes ont été mises à jour.' }
                 format.json { render :show, status: :ok, location: @reunion }
             else
                 format.html { render :index }

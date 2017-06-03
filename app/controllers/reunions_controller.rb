@@ -7,7 +7,7 @@ class ReunionsController < ApplicationController
   # GET /reunions
   # GET /reunions.json
   def index
-    @reunions = Reunion.all
+    @reunions = Reunion.all.order(:date_debut).reverse_order
   end
 
   # GET /reunions/1

@@ -17,6 +17,7 @@ class Reunion < ApplicationRecord
     has_many :relation_reunion_users, :foreign_key => "reunion_id", :dependent => :destroy
     has_many :presents, :through => :relation_reunion_users, :source => :user
 
+
     def count_presents
         presents.count
     end
@@ -25,6 +26,9 @@ class Reunion < ApplicationRecord
         dmsession.participants.count
     end
 
+    def count_roles
+        relation_reunion_users.where.not(user_role: nil).count
+    end
 
     def updatepresents_by_ids!(suids)
 

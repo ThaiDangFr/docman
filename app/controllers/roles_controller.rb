@@ -5,7 +5,7 @@ class RolesController < ApplicationController
     before_action :admin_user
 
     def index   
-        @relation_reunion_users = @reunion.relation_reunion_users
+        @relation_reunion_users = @reunion.relation_reunion_users.order(:user_id)
     end
 
     def update

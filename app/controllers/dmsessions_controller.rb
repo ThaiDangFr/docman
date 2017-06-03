@@ -6,7 +6,7 @@ class DmsessionsController < ApplicationController
   # GET /dmsessions
   # GET /dmsessions.json
   def index
-    @dmsessions = Dmsession.all
+    @dmsessions = Dmsession.all.order(:date_fin).reverse_order
   end
 
   # GET /dmsessions/1
