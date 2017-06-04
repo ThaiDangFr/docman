@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+    resources :userviews
+
     resources :reunions do
         resources :presences, :only => [:create, :index]
         resources :roles, :only => [:index, :update]

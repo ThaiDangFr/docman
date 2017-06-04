@@ -1,3 +1,10 @@
 <h1>Aide</h1>
+<% if !signed_in? %>
 <p>
+Veuillez vous <%= link_to "identifier", signin_path %> avec le compte qui vous a été communiqué. Si vous n'en avez pas, contactez l'administrateur du site.
 </p>
+<% else %>
+<p>
+Veuillez sélectionner une <%= link_to "réunion", userviews_path %> qui vous intéresse
+</p>
+<% end %>

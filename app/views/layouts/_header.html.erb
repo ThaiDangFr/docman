@@ -2,17 +2,16 @@
     <%= link_to logo, root_path %>
     <nav class="round">
     <ul>
-        <li><%= link_to "Accueil",root_path  %></li>
-
         <% if signed_in? %>
+            <li><%= link_to "Réunions", userviews_path %></li>
             <li><%= link_to "Profil", current_user %></li>
 
             <% if current_user.admin? %>
-                <li><i><%= link_to "Utilisateurs", users_path %></i></li>
-                <li><i><%= link_to "Sociétés", societes_path %></i></li>
-                <li><i><%= link_to "Programmes", programmes_path %></i></li>
-                <li><i><%= link_to "Sessions", dmsessions_path %></i></li>
-                <li><i><%= link_to "Réunions", reunions_path %></i></li>
+                <li><i><%= link_to "[Utilisateurs]", users_path %></i></li>
+                <li><i><%= link_to "[Sociétés]", societes_path %></i></li>
+                <li><i><%= link_to "[Programmes]", programmes_path %></i></li>
+                <li><i><%= link_to "[Sessions]", dmsessions_path %></i></li>
+                <li><i><%= link_to "[Réunions]", reunions_path %></i></li>
             <% end %>
 
         <% end %>

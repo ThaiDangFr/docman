@@ -1,4 +1,10 @@
 <h1>Contact</h1>
 <p>
-
+Les administrateurs du site sont :
+<ul>
+    <% adm = User.where(:admin => true) %>
+    <% adm.each do |u| %>
+        <li><%= u %> : <%= u.email %></li>
+    <% end unless adm.nil? %>
+</ul>
 </p>
