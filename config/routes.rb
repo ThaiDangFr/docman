@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-    resources :mesreunions
-
     resources :reunions do
         resources :presences, :only => [:create, :index]
         resources :roles, :only => [:index, :update]
@@ -19,6 +17,7 @@ Rails.application.routes.draw do
     resources :users
     resources :sessions, :only => [:new, :create, :destroy]
 
+    match '/mesreunions', to: 'reunions#index', via: [:get]
     match '/signup', to: 'users#new', via: [:get]
     match '/signin',  to: 'sessions#new', via: [:get]
     match '/signout', to: 'sessions#destroy', via: [:get, :delete]

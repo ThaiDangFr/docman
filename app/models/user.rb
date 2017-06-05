@@ -55,6 +55,79 @@ validates_inclusion_of :profil, :in => ['participant', 'médecin référent','é
 before_save :encrypt_password
 
 
+
+    def moderateur_des_reunions_ids
+        relation_reunion_users.where(user_role: :modérateur).pluck(:reunion_id)
+    end
+
+    def secretaire_des_reunions_ids
+        relation_reunion_users.where(user_role: :secrétaire).pluck(:reunion_id)
+    end
+
+
+    # l'admin, le responsable de session
+    def canCreateReunion?(session_id)
+        if self.admin
+            return true
+        elsif session_id.in? self.responsable_des_sessions.ids
+            return true
+        else
+            return false
+        end
+    end
+
+    # canCreateReunion + le modérateur et le secrétaire de la réunion
+    def canModifyReunion?(reunion_id)
+        r = Reunion.find(reunion_id)
+
+        if r.nil?
+            return false
+        end
+
+        dmsession_id = r.dmsession_id 
+
+        if !dmsession_id.nil? and canCreateReunion?(dmsession_id)
+            return true
+        elsif reunion_id.in? moderateur_des_reunions_ids
+            return true
+        elsif reunion_id.in? secretaire_des_reunions_ids
+            return true
+        else
+            return false
+        end
+    end
+  
+    # admin 
+    def canDeleteReunion?(reunion_id)
+        if self.admin
+            return true
+        end
+    end
+
+    # participants de dmsession + canModifyReunion
+    def canViewReunion?(reunion_id)
+        r = Reunion.find(reunion_id)
+
+        if r.nil?
+            return false
+        end
+
+        dmsession_id = r.dmsession_id
+        
+
+        if self.admin
+            return true
+        elsif dmsession_id.in? self.participant_des_sessions.ids
+            return true 
+        elsif canModifyReunion?(reunion_id)
+            return true
+        else
+            return false
+        end        
+    end
+
+    
+ 
     def has_password?(password_soumis)
         encrypted_password == encrypt(password_soumis)
     end
