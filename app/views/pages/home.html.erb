@@ -1,7 +1,7 @@
 <h1>Bienvenue</h1>
 
 <% if signed_in? %>
-<p>Veuillez sélectionner une <%= link_to "réunion", userviews_path %> qui vous intéresse</p>
+<p>Veuillez sélectionner une <%= link_to "réunion", mesreunions_path %> qui vous intéresse</p>
 <% else %>
 <%= link_to "S'identifier", signin_path, :class => "signup_button round" %>
 <% end %>

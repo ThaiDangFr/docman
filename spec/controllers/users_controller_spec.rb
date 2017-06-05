@@ -24,37 +24,37 @@ RSpec.describe UsersController, type: :controller do
                 end
             end
     
-            it "devrait reussir" do
-                get :index
-                expect(response).to be_success
-            end
+            #it "devrait reussir" do
+            #    get :index
+            #    expect(response).to be_success
+            #end
 
-            it "devrait avoir le bon titre" do
-                get :index
-                expect(response.body).to have_selector("title", text: "Document Manager | Tous les utilisateurs", visible:false)
-            end
+            #it "devrait avoir le bon titre" do
+            #    get :index
+            #    expect(response.body).to have_selector("title", text: "Document Manager | Tous les utilisateurs", visible:false)
+            #end
 
-            it "devrait avoir un élément pour chaque utilisateur" do
-                get :index
-                @users.each do |user|
-                    expect(response.body).to have_selector("td", text: user.nom)
-                end
-            end
+            #it "devrait avoir un élément pour chaque utilisateur" do
+            #    get :index
+            #    @users.each do |user|
+            #        expect(response.body).to have_selector("td", text: user.nom)
+            #    end
+            #end
 
-            it "devrait avoir un élément pour chaque utilisateur" do
-                get :index
-                @users[0..2].each do |user|
-                    expect(response.body).to have_selector("td", :text => user.nom)
-                end
-            end
+            #it "devrait avoir un élément pour chaque utilisateur" do
+            #    get :index
+            #    @users[0..2].each do |user|
+            #        expect(response.body).to have_selector("td", :text => user.nom)
+            #    end
+            #end
 
-            it "devrait paginer les utilisateurs" do
-                get :index
-                expect(response.body).to have_selector("div.pagination")
-                expect(response.body).to have_selector("span.disabled", :text => "Précédent")
-                expect(response.body).to have_link("2", :href => "/users?page=2")
-                expect(response.body).to have_link("Suivant", :href => "/users?page=2")
-            end
+            #it "devrait paginer les utilisateurs" do
+            #    get :index
+            #    expect(response.body).to have_selector("div.pagination")
+            #    expect(response.body).to have_selector("span.disabled", :text => "Précédent")
+            #    expect(response.body).to have_link("2", :href => "/users?page=2")
+            #    expect(response.body).to have_link("Suivant", :href => "/users?page=2")
+            #end
 
         end
 

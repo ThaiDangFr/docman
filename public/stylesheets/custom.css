@@ -80,6 +80,18 @@ nav ul li a:hover {
 }
 
 
+nav[role="sub"] ul li a:visited {
+color:#FF0000;
+}
+
+nav[role="sub"] ul li a {
+color:#FF0000;
+}
+
+nav[role="sub"] ul li {
+padding:0;
+}
+
 /* Bouton inscription */
 
 a.signup_button {

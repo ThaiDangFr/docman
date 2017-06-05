@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-    resources :userviews
+    resources :mesreunions
 
     resources :reunions do
         resources :presences, :only => [:create, :index]

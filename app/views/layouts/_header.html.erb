@@ -3,16 +3,9 @@
     <nav class="round">
     <ul>
         <% if signed_in? %>
-            <li><%= link_to "Réunions", userviews_path %></li>
+            <li><%= link_to "MesRéunions", mesreunions_path %></li>
             <li><%= link_to "Profil", current_user %></li>
 
-            <% if current_user.admin? %>
-                <li><i><%= link_to "[Utilisateurs]", users_path %></i></li>
-                <li><i><%= link_to "[Sociétés]", societes_path %></i></li>
-                <li><i><%= link_to "[Programmes]", programmes_path %></i></li>
-                <li><i><%= link_to "[Sessions]", dmsessions_path %></i></li>
-                <li><i><%= link_to "[Réunions]", reunions_path %></i></li>
-            <% end %>
 
         <% end %>
 
@@ -27,4 +20,18 @@
             <% end %>
     </ul>
   </nav>
+
+    <% if signed_in? %>
+    <nav role="sub" class="round">
+    <ul>
+        <% if current_user.admin? %>
+            <li><%= link_to "[Utilisateurs]", users_path %></li>
+            <li><%= link_to "[Sociétés]", societes_path %></li>
+            <li><%= link_to "[Programmes]", programmes_path %></li>
+            <li><%= link_to "[Sessions]", dmsessions_path %></li>
+            <li><%= link_to "[Réunions]", reunions_path %></li>
+        <% end %>
+    </ul>
+    </nav>
+    <% end %>
 </header>
