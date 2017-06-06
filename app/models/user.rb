@@ -69,7 +69,7 @@ before_save :encrypt_password
     def canCreateReunion?(s_session_id)
         session_id = s_session_id.to_i
 
-        if self.admin
+        if self.admin?
             return true
         elsif session_id.in? self.responsable_des_sessions.ids
             return true
@@ -77,6 +77,17 @@ before_save :encrypt_password
             return false
         end
     end
+
+    def canNewReunion?
+        if self.admin?
+            return true
+        elsif !self.responsable_des_sessions.empty?
+            return true
+        else
+            return false
+        end
+    end
+
 
     # canCreateReunion + le modérateur et le secrétaire de la réunion
     def canModifyReunion?(s_reunion_id)

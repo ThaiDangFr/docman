@@ -36,6 +36,6 @@ class PresencesController < ApplicationController
     end    
 
     def control_rights
-        redirect_to(root_path) unless current_user.canModifyReunion?(params[:reunion_id])
+        redirect_to(reunions_path, error: 'Vous ne disposez pas de privilèges suffisants') unless current_user.canModifyReunion?(params[:reunion_id])
     end
 end

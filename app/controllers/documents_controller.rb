@@ -1,7 +1,8 @@
 class DocumentsController < ApplicationController
     before_action :set_objectdm
     before_action :authenticate
-    before_action :admin_user
+    before_action :control_rights
+    #before_action :admin_user
 
     def create
         add_more_documents(documents_params[:documents])
@@ -17,8 +18,32 @@ class DocumentsController < ApplicationController
 
     private
 
-    def admin_user
-        redirect_to(root_path) unless current_user.admin?
+#    def admin_user
+#        redirect_to(root_path) unless current_user.admin?
+#    end
+
+    def control_rights
+        if current_user.admin?
+            rightok = true
+        elsif @objectdm.instance_of? Reunion
+            rightok = current_user.canModifyReunion?(@objectdm.id)
+        elsif @objectdm.instance_of? Dmsession
+            if @objectdm.responsable_id == current_user.id
+                rightok = true
+            else
+                rightok = false
+            end
+        elsif @objectdm.instance_of? Programme
+            if @objectdm.responsable_id == current_user.id
+                rightok = true
+            else
+                rightok = false
+            end
+        else
+            rightok = false
+        end
+
+        redirect_to(root_path, error: 'Vous ne disposez pas de privilèges suffisants') unless rightok
     end
 
     def authenticate

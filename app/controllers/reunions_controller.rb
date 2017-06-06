@@ -1,6 +1,7 @@
 class ReunionsController < ApplicationController
     before_action :set_reunion, only: [:show, :edit, :update, :destroy]
     before_action :authenticate
+    before_action :control_rights_new, only: [:new]
     before_action :control_rights_create, only: [:create]
     before_action :control_rights, only: [:show, :edit, :update, :destroy]
     #before_action :admin_user
@@ -120,10 +121,14 @@ class ReunionsController < ApplicationController
     end 
 
 
+    def control_rights_new
+        redirect_to(reunions_path, error: 'Vous ne disposez pas de privilèges suffisants') unless current_user.canNewReunion?
+    end
+
     def control_rights_create
         session_id = params[:reunion][:dmsession_id]
         puts "control_rights_create session_id=#{session_id}"
-        redirect_to(root_path) unless current_user.canCreateReunion?(session_id)
+        redirect_to(reunions_path, error: 'Vous ne disposez pas de privilèges suffisants') unless current_user.canCreateReunion?(session_id)
     end
 
 
@@ -131,19 +136,19 @@ class ReunionsController < ApplicationController
         rid = @reunion.id unless @reunion.nil?
 
         if rid.nil?
-            redirect_to(root_path)
+            redirect_to(reunions_path)
         end
 
         puts "action_name=#{action_name}"
 
         if action_name == "show"
-            redirect_to(root_path) unless current_user.canViewReunion?(rid)
+            redirect_to(reunions_path, error: 'Vous ne disposez pas de privilèges suffisants') unless current_user.canViewReunion?(rid)
         elsif action_name == "edit"
-            redirect_to(root_path) unless current_user.canModifyReunion?(rid)
+            redirect_to(reunions_path, error: 'Vous ne disposez pas de privilèges suffisants') unless current_user.canModifyReunion?(rid)
         elsif action_name == "update"
-            redirect_to(root_path) unless current_user.canModifyReunion?(rid)
+            redirect_to(reunions_path, error: 'Vous ne disposez pas de privilèges suffisants') unless current_user.canModifyReunion?(rid)
         elsif action_name == "destroy"
-            redirect_to(root_path) unless current_user.canDeleteReunion?(rid)
+            redirect_to(reunions_path, error: 'Vous ne disposez pas de privilèges suffisants') unless current_user.canDeleteReunion?(rid)
         end
     end
   
