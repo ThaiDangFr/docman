@@ -2,7 +2,8 @@ class RolesController < ApplicationController
     
     before_action :set_reunion
     before_action :authenticate
-    before_action :admin_user
+    before_action :control_rights, only: [:index, :update]
+#    before_action :admin_user
 
     def index   
         @relation_reunion_users = @reunion.relation_reunion_users.order(:user_id)
@@ -22,9 +23,9 @@ class RolesController < ApplicationController
 
     private
 
-    def admin_user
-        redirect_to(root_path) unless current_user.admin?
-    end
+#    def admin_user
+#        redirect_to(root_path) unless current_user.admin?
+#    end
 
     def authenticate
         deny_access unless signed_in?
@@ -33,5 +34,9 @@ class RolesController < ApplicationController
     def set_reunion
         @reunion = Reunion.find(params[:reunion_id])
     end    
+
+    def control_rights
+        redirect_to(root_path) unless current_user.canModifyReunion?(params[:reunion_id])
+    end
 
 end

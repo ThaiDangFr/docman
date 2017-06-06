@@ -1,13 +1,16 @@
 class ReunionsController < ApplicationController
     before_action :set_reunion, only: [:show, :edit, :update, :destroy]
     before_action :authenticate
-    before_action :admin_user
+    before_action :control_rights_create, only: [:create]
+    before_action :control_rights, only: [:show, :edit, :update, :destroy]
+    #before_action :admin_user
 
 
   # GET /reunions
   # GET /reunions.json
   def index
-    @reunions = Reunion.all.order(:date_debut).reverse_order
+    #@reunions = Reunion.all.order(:date_debut).reverse_order
+    @reunions = viewable_reunions
   end
 
   # GET /reunions/1
@@ -75,11 +78,73 @@ class ReunionsController < ApplicationController
       params.require(:reunion).permit(:titre, :date_debut, :lieu, :ordre_du_jour, :dmsession_id, {documents: []})
     end
 
-    def admin_user
-        redirect_to(root_path) unless current_user.admin?
-    end
+#    def admin_user
+#        redirect_to(root_path) unless current_user.admin?
+#    end
+
 
     def authenticate
         deny_access unless signed_in?
-    end    
+    end 
+
+    def viewable_reunions
+        if current_user.admin?
+            return Reunion.all.order(:date_debut).reverse_order
+        end
+
+        vr = []
+
+        # reunions si responsable de programme
+        current_user.programmes.each do |p|
+            p.dmsessions.each do |s|
+                vr.concat(s.reunions)
+            end
+        end
+
+        # reunions si responsable de session
+        current_user.responsable_des_sessions.each do |s|
+            vr.concat(s.reunions)
+        end
+
+        # reunions si médecin référent
+        current_user.medecin_referent_des_sessions.each do |s|
+            vr.concat(s.reunions)
+        end
+
+        # reunions si participant
+        current_user.participant_des_sessions.each do |s|
+            vr.concat(s.reunions)
+        end
+        
+        return vr.uniq.sort_by { |h| h[:date_debut]}.reverse!
+    end 
+
+
+    def control_rights_create
+        session_id = params[:reunion][:dmsession_id]
+        puts "control_rights_create session_id=#{session_id}"
+        redirect_to(root_path) unless current_user.canCreateReunion?(session_id)
+    end
+
+
+    def control_rights
+        rid = @reunion.id unless @reunion.nil?
+
+        if rid.nil?
+            redirect_to(root_path)
+        end
+
+        puts "action_name=#{action_name}"
+
+        if action_name == "show"
+            redirect_to(root_path) unless current_user.canViewReunion?(rid)
+        elsif action_name == "edit"
+            redirect_to(root_path) unless current_user.canModifyReunion?(rid)
+        elsif action_name == "update"
+            redirect_to(root_path) unless current_user.canModifyReunion?(rid)
+        elsif action_name == "destroy"
+            redirect_to(root_path) unless current_user.canDeleteReunion?(rid)
+        end
+    end
+  
 end
