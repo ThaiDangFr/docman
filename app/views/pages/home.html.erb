@@ -1,7 +1,9 @@
 <h1>Bienvenue</h1>
 
 <% if signed_in? %>
-<p>Veuillez sélectionner une <%= link_to "réunion", mesreunions_path %> qui vous intéresse</p>
+<p>Veuillez sélectionner une <%= link_to "réunion", mesreunions_path %> qui vous intéresse.</p>
+<p>Vous pouvez également modifier votre <%= link_to "profil", current_user %> si vous les souhaitez.</p>
+<p>En cas de soucis, veuillez consulter la rubrique d'<%= link_to "aide", help_path %> ou alors contacter les <%= link_to "administrateurs",contact_path %> du site.</p>
 <% else %>
 <%= link_to "S'identifier", signin_path, :class => "signup_button round" %>
 <% end %>

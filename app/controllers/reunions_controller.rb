@@ -22,10 +22,12 @@ class ReunionsController < ApplicationController
   # GET /reunions/new
   def new
     @reunion = Reunion.new
+    @dmsessions = viewable_sessions
   end
 
   # GET /reunions/1/edit
   def edit
+    @dmsessions = viewable_sessions
   end
 
   # POST /reunions
@@ -87,6 +89,38 @@ class ReunionsController < ApplicationController
     def authenticate
         deny_access unless signed_in?
     end 
+
+    def viewable_sessions
+       # si admin => toutes les sessions
+        if current_user.admin?
+            return Dmsession.all.order(:date_fin).reverse_order
+        end
+    
+        vs = []
+
+       # si user est responsable de programme => toutes les sessions filles
+        current_user.programmes.each do |p|
+            vs.concat(p.dmsessions)
+        end
+
+       # si user est responsable de sessions => ces sessions là
+        vs.concat(current_user.responsable_des_sessions)
+
+       # si user est médecin référent de sessions => toutes les sessions liées
+        vs.concat(current_user.medecin_referent_des_sessions)        
+
+       # si user est modérateur ou secretaire de reunion => les sessions pères
+        reunion_ids = []
+        reunion_ids.concat(current_user.moderateur_des_reunions_ids)
+        reunion_ids.concat(current_user.secretaire_des_reunions_ids)
+        reunion_ids.each do |rid|
+            r = Reunion.find(rid)
+            vs.push(r.dmsession) unless r.nil?
+        end
+
+        return vs.uniq.sort_by { |h| h[:date_fin]}.reverse!
+    end
+
 
     def viewable_reunions
         if current_user.admin?

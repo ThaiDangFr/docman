@@ -65,7 +65,7 @@ before_save :encrypt_password
     end
 
 
-    # l'admin, le responsable de session
+    # l'admin, le responsable de session, les responsable de programme
     def canCreateReunion?(s_session_id)
         session_id = s_session_id.to_i
 
@@ -73,15 +73,25 @@ before_save :encrypt_password
             return true
         elsif session_id.in? self.responsable_des_sessions.ids
             return true
+        elsif session_id.in? lambda {
+                            sid = []
+                            self.programmes.each do |p| 
+                                sid.concat(p.dmsessions.ids)
+                            end
+                            return sid.uniq }.call
+            return true
         else
             return false
         end
     end
 
+    # le responsable de session, le responsable de programme
     def canNewReunion?
         if self.admin?
             return true
         elsif !self.responsable_des_sessions.empty?
+            return true
+        elsif !self.programmes.empty?
             return true
         else
             return false
