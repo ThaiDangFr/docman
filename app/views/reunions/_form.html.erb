@@ -3,7 +3,7 @@
 
   <div class="field">
     <%= f.label :titre %>
-    <%= f.text_field :titre %>
+    <%= f.text_field :titre, size:50 %>
   </div>
 
   <div class="field">
@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= f.label :lieu %>
-    <%= f.text_field :lieu %>
+    <%= f.text_field :lieu, size:50 %>
   </div>
 
   <div class="field">
-    <%= f.label :ordre_du_jour %>
-    <%= f.text_field :ordre_du_jour %>
+    <%= f.label :ordre_du_jour %><br/>
+    <%= f.text_area :ordre_du_jour %>
   </div>
 
   <div class="field">

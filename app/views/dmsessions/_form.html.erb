@@ -4,7 +4,7 @@
 
   <div class="field">
     <%= f.label :titre %>
-    <%= f.text_field :titre %>
+    <%= f.text_field :titre, size:50 %>
   </div>
 
   <div class="field">
@@ -33,8 +33,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :description %>
-    <%= f.text_field :description %>
+    <%= f.label :description %><br/>
+    <%= f.text_area :description %>
   </div>
 
     <% if dmsession.id.nil? %>

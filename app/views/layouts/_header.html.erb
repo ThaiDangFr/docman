@@ -23,15 +23,15 @@
 
     <% if signed_in? %>
     <nav role="sub" class="round">
-    <ul>
         <% if current_user.admin? %>
-            <li><%= link_to "[Utilisateurs]", users_path %></li>
-            <li><%= link_to "[Sociétés]", societes_path %></li>
-            <li><%= link_to "[Programmes]", programmes_path %></li>
-            <li><%= link_to "[Sessions]", dmsessions_path %></li>
-            <li><%= link_to "[Réunions]", reunions_path %></li>
+            <ul>
+                <li><%= link_to "[Utilisateurs]", users_path %></li>
+                <li><%= link_to "[Sociétés]", societes_path %></li>
+                <li><%= link_to "[Programmes]", programmes_path %></li>
+                <li><%= link_to "[Sessions]", dmsessions_path %></li>
+                <li><%= link_to "[Réunions]", reunions_path %></li>
+            </ul>
         <% end %>
-    </ul>
     </nav>
     <% end %>
 </header>
