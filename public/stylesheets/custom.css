@@ -223,3 +223,16 @@ ul.users {
 .users li {
 	list-style: none;
 }
+
+
+/*
+table tr:nth-child(even) td {
+  background: transparent;
+}
+
+table thead th {
+background: transparent;
+}
+*/
+
+
