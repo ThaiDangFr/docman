@@ -26,7 +26,7 @@
         <% nb_present = reunion.count_presents %>
         <td><% if current_user.canModifyReunion?(reunion.id) %><%= link_to 'Présences', reunion_presences_path(reunion) %>(<%= nb_present %>/<%= reunion.count_participants %>)<br/><% if nb_present != 0 %><%= link_to 'Rôles', reunion_roles_path(reunion) %>(<%= reunion.count_roles%>)<% end %><% end %></td>
         <td><%= link_to 'Voir', reunion %></td>
-        <td><% if current_user.canModifyReunion?(reunion.id) %><%= link_to 'Modifier', edit_reunion_path(reunion) %><% end %></td>
+        <td><% if current_user.canModifyReunion?(reunion.id) %><%= link_to 'Modifier', edit_reunion_path(reunion) %><br/><%= link_to "Diffuser",diffuser_reunion_path(reunion) %><% end %></td>
         <td><% if current_user.canDeleteReunion?(reunion.id) %><%= link_to 'Supprimer', reunion, method: :delete, data: { confirm: 'Etes-vous sûr ?' } %><% end %></td>
       </tr>
     <% end %>

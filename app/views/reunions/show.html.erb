@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+<% if !@reunion.historique.nil? %>
+<div id="historique" class="round">
+    <strong>Dernier état</strong><br/>
+    <div class="content"><%= @reunion.historique %></div>
+</div>
+<% end %>
+
 <p>
   <strong>Titre:</strong>
   <%= @reunion.titre %>

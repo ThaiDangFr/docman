@@ -140,33 +140,6 @@ color:gray;;
 }
 
 
-
-
-
-/* User show page */
-
-table.profile {
-  width: 100%;
-  margin-bottom: 0;
-}
-
-td.main {
-  width: 70%;
-  padding: 1em;
-}
-
-td.sidebar {
-  width: 30%;
-  padding: 1em;
-  vertical-align: top;
-  background: #ffc;
-}
-
-.profile img.gravatar {
-  border: 1px solid #999;
-  margin-bottom: -15px;
-}
-
 /* formulaire signup */
 div.field, div.actions {
   margin-bottom: 10px;
@@ -236,3 +209,14 @@ background: transparent;
 */
 
 
+/* historique */
+#historique {
+display:block;
+float:right;
+width:30%;
+padding : 2px 5px 2px 5px;
+border: 1px solid #D3D3D3;
+}
+#historique .content {
+font-size:small;
+}

@@ -3,6 +3,10 @@ Rails.application.routes.draw do
         resources :presences, :only => [:create, :index]
         resources :roles, :only => [:index, :update]
         resources :documents, :only => [:create, :destroy]
+
+        member do
+            get :diffuser
+        end
     end
 
     resources :dmsessions do

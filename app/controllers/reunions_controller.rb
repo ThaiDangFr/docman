@@ -1,10 +1,42 @@
 class ReunionsController < ApplicationController
-    before_action :set_reunion, only: [:show, :edit, :update, :destroy]
+    before_action :set_reunion, only: [:show, :edit, :update, :destroy, :diffuser]
     before_action :authenticate
     before_action :control_rights_new, only: [:new]
     before_action :control_rights_create, only: [:create]
-    before_action :control_rights, only: [:show, :edit, :update, :destroy]
+    before_action :control_rights, only: [:show, :edit, :update, :destroy, :diffuser]
     #before_action :admin_user
+
+
+    def diffuser
+        emails = []
+        
+        # responsable de session
+        emails.push(@reunion.dmsession.responsable.email)
+
+        # médecin référent de la session 
+        emails.push(@reunion.dmsession.medecin_referent.email)
+
+        # participants de la session
+        @reunion.dmsession.participants.each do |p|
+            emails.push(p.email)
+        end
+
+        # responsable de programme    
+        emails.push(@reunion.dmsession.programme.responsable.email)
+
+
+        # envoyer un mail avec titre, date_debut, lieu, ordre_du_jour, presents et documents
+        # @reunion.presents.map(&:to_s)
+
+
+
+        timestamp = I18n.l Time.now
+        @reunion.historique = "Diffusée le #{timestamp} par #{current_user} à #{emails.to_sentence}."
+        @reunion.save!
+        redirect_to @reunion, success: "La réunion a été diffusée par email."
+    end
+
+
 
 
   # GET /reunions
@@ -35,6 +67,9 @@ class ReunionsController < ApplicationController
   def create
     @reunion = Reunion.new(reunion_params)
 
+    timestamp = I18n.l Time.now
+    @reunion.historique = "Créée le #{timestamp} par #{current_user}."
+
     respond_to do |format|
       if @reunion.save
         format.html { redirect_to @reunion, success: 'La réunion a été créée.' }
@@ -49,6 +84,9 @@ class ReunionsController < ApplicationController
   # PATCH/PUT /reunions/1
   # PATCH/PUT /reunions/1.json
   def update
+    timestamp = I18n.l Time.now
+    @reunion.historique = "Modifiée le #{timestamp} par #{current_user}."
+
     respond_to do |format|
       if @reunion.update(reunion_params)
         format.html { redirect_to @reunion, success: 'La réunion a été mise à jour.' }
@@ -183,6 +221,8 @@ class ReunionsController < ApplicationController
             redirect_to(reunions_path, error: 'Vous ne disposez pas de privilèges suffisants') unless current_user.canModifyReunion?(rid)
         elsif action_name == "destroy"
             redirect_to(reunions_path, error: 'Vous ne disposez pas de privilèges suffisants') unless current_user.canDeleteReunion?(rid)
+        elsif action_name == "diffuser"
+            redirect_to(reunions_path, error: 'Vous ne disposez pas de privilèges suffisants') unless current_user.canModifyReunion?(rid)
         end
     end
   
