@@ -23,9 +23,9 @@
         <td><%= I18n.l programme.date_fin unless programme.date_fin.nil? %></td>
     
         <td><%=  programme.responsable %></td>
-        <td><%= link_to 'Voir', programme %></td>
-        <td><%= link_to 'Modifier', edit_programme_path(programme) %></td>
-        <td><%= link_to 'Supprimer', programme, method: :delete, data: { confirm: 'Etes-vous sûr ?' } %></td>
+        <td><%= link_to 'Voir', programme, class: "ui button mini label green" %></td>
+        <td><%= link_to 'Modifier', edit_programme_path(programme), class: "ui button mini label orange" %></td>
+        <td><%= link_to 'Supprimer', programme, method: :delete, data: { confirm: 'Etes-vous sûr ?' }, class: "ui button mini label red" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,4 +35,4 @@
 
 <br/>
 
-<%= link_to 'Créer un nouveau programme', new_programme_path %>
+<%= link_to 'Créer un nouveau programme', new_programme_path, class: "ui button blue" %>

@@ -26,9 +26,9 @@
         <td><%= dmsession.programme.titre unless dmsession.programme.nil? %></td>
         <td><%= dmsession.responsable %></td>
         <td><%= dmsession.medecin_referent %></td>
-        <td><%= link_to 'Voir', dmsession %></td>
-        <td><%= link_to 'Modifier', edit_dmsession_path(dmsession) %></td>
-        <td><%= link_to 'Supprimer', dmsession, method: :delete, data: { confirm: 'Etes-vous sûr ?' } %></td>
+        <td><%= link_to 'Voir', dmsession, class: "ui button mini label green" %></td>
+        <td><%= link_to 'Modifier', edit_dmsession_path(dmsession), class: "ui button mini label orange" %></td>
+        <td><%= link_to 'Supprimer', dmsession, method: :delete, data: { confirm: 'Etes-vous sûr ?' }, class: "ui button mini label red" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +38,4 @@
 
 <br/>
 
-<%= link_to 'Créer une nouvelle session', new_dmsession_path %>
+<%= link_to 'Créer une nouvelle session', new_dmsession_path, class: "ui button blue" %>

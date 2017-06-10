@@ -49,5 +49,5 @@
 </p>
 
 
-<% if current_user.canModifyReunion?(@reunion.id) %><%= link_to 'Modifier', edit_reunion_path(@reunion) %> |
-<% end %><%= link_to 'Retour', reunions_path %>
+<% if current_user.canModifyReunion?(@reunion.id) %><%= link_to 'Modifier', edit_reunion_path(@reunion), class: "ui button mini" %> |
+<% end %><%= link_to 'Retour', reunions_path, class: "ui button mini" %>

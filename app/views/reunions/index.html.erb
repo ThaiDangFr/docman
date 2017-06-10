@@ -12,7 +12,7 @@
       <th>Lieu</th>
       <th>Ordre du jour</th>
       <th>Session</th>
-      <th colspan="4"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -22,14 +22,30 @@
         <td><%= reunion.titre %></td>
         <td><%= I18n.l reunion.date_debut %></td>
         <td><%= reunion.lieu %></td>
-        <td><%= reunion.ordre_du_jour %></td>
+        <td><%= reunion.ordre_du_jour.truncate(20) %></td>
         <td><%= reunion.dmsession.titre unless reunion.dmsession.nil? %></td>
 
         <% nb_present = reunion.count_presents %>
-        <td><% if current_user.canModifyReunion?(reunion.id) %><%= link_to 'Présences', reunion_presences_path(reunion) %>(<%= nb_present %>/<%= reunion.count_participants %>)<br/><% if nb_present != 0 %><%= link_to 'Rôles', reunion_roles_path(reunion) %>(<%= reunion.count_roles%>)<% end %><% end %></td>
-        <td><%= link_to 'Voir', reunion %></td>
-        <td><% if current_user.canModifyReunion?(reunion.id) %><%= link_to 'Modifier', edit_reunion_path(reunion) %><br/><%= link_to "Diffuser",diffuser_reunion_path(reunion) %><% end %></td>
-        <td><% if current_user.canDeleteReunion?(reunion.id) %><%= link_to 'Supprimer', reunion, method: :delete, data: { confirm: 'Etes-vous sûr ?' } %><% end %></td>
+        <td>
+        <% if current_user.canModifyReunion?(reunion.id) %>
+            <%= link_to "Présences(#{nb_present}/#{reunion.count_participants})", reunion_presences_path(reunion) %>
+
+            <% if nb_present != 0 %>
+                <%= link_to "Rôles(#{reunion.count_roles})", reunion_roles_path(reunion) %>
+            <% end %>
+        <% end %>
+        </td>
+
+        <td><%= link_to 'Voir', reunion, class: "ui mini green label button" %></td>
+        
+        <% if current_user.canModifyReunion?(reunion.id) %>
+        <td><%= link_to 'Modifier', edit_reunion_path(reunion), class: "ui mini button label orange" %></td>
+        <td><%= link_to "Diffuser",diffuser_reunion_path(reunion), data: {confirm: 'Etes-vous sûr de vouloir diffuser le compte-rendu de réunion ?' }, class: "ui mini button label violet" %></td>
+        <% end %>
+
+        <% if current_user.canDeleteReunion?(reunion.id) %>
+        <td><%= link_to 'Supprimer', reunion, method: :delete, data: { confirm: 'Etes-vous sûr ?' },class: "ui mini button label red" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -40,5 +56,5 @@
 <br/>
 
 <% if current_user.canNewReunion? %>
-    <%= link_to 'Créer une nouvelle réunion', new_reunion_path %>
+    <%= link_to 'Créer une nouvelle réunion', new_reunion_path,class: "ui button blue" %>
 <% end %>

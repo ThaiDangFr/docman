@@ -4,10 +4,10 @@
     <td><%= user.prenom %></td>
     <td><%= user.profil %></td>
     <td><%= user.societe.raison_sociale unless user.societe.nil? %></td> 
-    <td><%= link_to 'voir', user %></td>
+    <td><%= link_to 'Voir', user, class: "ui button mini label green" %></td>
 
     <% if current_user.admin? %>
-    <td><%= link_to 'Modifier', edit_user_path(user) %></td>
-    <td><%= link_to "supprimer", user, method: :delete, data: {confirm: "Etes-vous certain de supprimer #{user.nom} ?"}  %>
+    <td><%= link_to 'Modifier', edit_user_path(user), class: "ui button mini label orange" %></td>
+    <td><%= link_to "supprimer", user, method: :delete, data: {confirm: "Etes-vous certain de supprimer #{user.nom} ?"}, class: "ui button mini label red"  %>
     <% end %>
 </tr>

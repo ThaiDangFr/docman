@@ -1,5 +1,6 @@
 .container {
-  width: 710px;
+  /*width: 710px;*/
+  width: 800px;
 }
 
 body {
@@ -80,6 +81,10 @@ nav ul li a:hover {
   text-decoration: underline;
 }
 
+nav[role="sub"] {
+clear:right;
+margin-top: 5px;
+}
 
 nav[role="sub"] ul li a:visited {
 color:#ffff00;
@@ -121,7 +126,8 @@ a.signup_button {
 footer {
   text-align: center;
   margin-top: 10px;
-  width: 710px;
+  /*width: 710px;*/
+    width: 800px;
   margin-left: auto;
   margin-right: auto;
 }

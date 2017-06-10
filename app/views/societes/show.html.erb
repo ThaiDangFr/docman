@@ -23,5 +23,4 @@
   <%= @societe.telephone %>
 </p>
 
-<%= link_to 'Modifier', edit_societe_path(@societe) %> |
-<%= link_to 'Retour', societes_path %>
+<%= link_to 'Modifier', edit_societe_path(@societe), class: "ui button mini" %> | <%= link_to 'Retour', societes_path, class: "ui button mini" %>

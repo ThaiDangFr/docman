@@ -22,9 +22,9 @@
         <td><%= societe.code_postal %></td>
         <td><%= societe.ville %></td>
         <td><%= societe.telephone %></td>
-        <td><%= link_to 'Voir', societe %></td>
-        <td><%= link_to 'Modifier', edit_societe_path(societe) %></td>
-        <td><%= link_to 'Supprimer', societe, method: :delete, data: { confirm: 'Etes vous sûr ?' } %></td>
+        <td><%= link_to 'Voir', societe, class: "ui button mini label green" %></td>
+        <td><%= link_to 'Modifier', edit_societe_path(societe), class: "ui button mini label orange" %></td>
+        <td><%= link_to 'Supprimer', societe, method: :delete, data: { confirm: 'Etes vous sûr ?' }, class: "ui button mini label red" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +34,4 @@
 
 <br/>
 
-<%= link_to 'Créer une nouvelle société', new_societe_path %>
+<%= link_to 'Créer une nouvelle société', new_societe_path, class: "ui button blue" %>

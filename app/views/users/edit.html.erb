@@ -4,9 +4,8 @@
 	<%= render 'fields', :f => f %>
 
 	<div class="actions">
-		<%= f.submit "Enregistrer" %>
+		<%= f.submit "Enregistrer", class: "ui button blue mini" %>
 	</div>
 <% end %>
 
-<%= link_to 'Voir', @user %> |
-<%= link_to 'Retour', users_path %>
+<%= link_to 'Voir', @user, class: "ui button mini" %> | <%= link_to 'Retour', users_path, class: "ui button mini" %>
