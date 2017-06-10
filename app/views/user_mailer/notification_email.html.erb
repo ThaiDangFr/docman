@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Compte-rendu de réunion "<%= @reunion.titre %>"</h1>
+    <p>
+        <strong>Date de début</strong><br/>
+        <%= I18n.l @reunion.date_debut %>
+    </p>
+
+    <p>
+        <strong>Lieu</strong><br/>
+        <%= @reunion.lieu %>
+    </p>
+
+    <p>
+        <strong>Ordre du jour</strong><br/>
+        <%= @reunion.ordre_du_jour %>
+    </p>
+
+    <p>
+        <strong>Session</strong><br/>
+        <%= @reunion.dmsession.titre unless @reunion.dmsession.nil? %>
+    </p>
+
+    <p>
+        <strong>Personnes présentes</strong><br/>
+        <% @reunion.presents.each do |p| %>
+            <% role = @reunion.getrole(p.id) %>
+            <%= p %> <% if !role.nil? %>(<%= role %>)<% end %><br/>
+        <% end %>
+    </p>
+
+
+    <p><%= link_to "Lien vers la réunion", @url %></p>
+  </body>
+</html>

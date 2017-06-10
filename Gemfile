@@ -17,7 +17,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'gravatar_image_tag'
 gem 'will_paginate', '~> 3.1.0'
 gem 'carrierwave'
-
+gem 'mail'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

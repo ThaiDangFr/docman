@@ -12,10 +12,10 @@ Un programme est représenté par un responsable et des documents associés. Un 
 <h5>Gestion des droits</h5>
 <p>
 <ul>
-<li>les administrateurs du site peuvent gérer les utilisateurs, créer des sociétés, créer des programmes, créer des sessions, créer des réunions</li>
-<li>les responsables de programme peuvent consulter, modifier et supprimer les réunions qui les concernent</li>
-<li>les responsables de session peuvent consulter, modifier et supprimer les réunions qui les concernent</li>
-<li>les modérateurs et secrétaires peuvent consulter, modifier et supprimer les réunions qui les concernent</li>
+<li>les administrateurs du site peuvent gérer les utilisateurs, créer des sociétés, créer des programmes, créer des sessions, créer des réunions, diffuser des compte-rendu</li>
+<li>les responsables de programme peuvent consulter, modifier, diffuser et supprimer les réunions qui les concernent</li>
+<li>les responsables de session peuvent consulter, modifier, diffuser et supprimer les réunions qui les concernent</li>
+<li>les modérateurs et secrétaires peuvent consulter, modifier, diffuser et supprimer les réunions qui les concernent</li>
 <li>les participants identifiés dans les sessions peuvent consulter les réunions qui les concernent</li>
 </ul>
 </p>
@@ -23,5 +23,17 @@ Un programme est représenté par un responsable et des documents associés. Un 
 <h5>Création des comptes</h5>
 <p>
 Chaque personne a la possibilité de créer un compte. Seul l'administrateur peut les associer dans des sessions. L'administrateur a également la possibiité de créer les comptes.
+</p>
+
+<h5>Diffusion par email du compte-rendu de réunion</h5>
+<p>
+Le bouton "diffuser" permet d'envoyer un email avec le compte-rendu de réunion aux personnes suivantes
+<ul>
+<li>responsable de session</li>
+<li>médecin référent de la session</li>
+<li>l'ensemble des participants de la session</li>
+<li>responsable de programme</li>
+</ul>
+L'expéditeur du mail est le responsable de session.
 </p>
 <% end %>
