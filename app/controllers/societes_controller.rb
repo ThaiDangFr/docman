@@ -6,7 +6,7 @@ class SocietesController < ApplicationController
   # GET /societes
   # GET /societes.json
   def index
-    @societes = Societe.all.order(:raison_sociale)
+    @societes = Societe.paginate(:page => params[:page]).order(:raison_sociale)
   end
 
   # GET /societes/1

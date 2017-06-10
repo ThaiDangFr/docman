@@ -25,7 +25,7 @@ class ReunionsController < ApplicationController
   # GET /reunions.json
   def index
     #@reunions = Reunion.all.order(:date_debut).reverse_order
-    @reunions = viewable_reunions
+    @reunions = viewable_reunions.paginate(:page => params[:page],:per_page => 5)
   end
 
   # GET /reunions/1

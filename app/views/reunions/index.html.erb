@@ -2,6 +2,8 @@
 
 <h1>Réunions</h1>
 
+<%= will_paginate %>
+
 <table>
   <thead>
     <tr>
@@ -33,7 +35,9 @@
   </tbody>
 </table>
 
-<br>
+<%= will_paginate %>
+
+<br/>
 
 <% if current_user.canNewReunion? %>
     <%= link_to 'Créer une nouvelle réunion', new_reunion_path %>

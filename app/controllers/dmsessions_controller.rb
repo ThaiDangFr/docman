@@ -6,7 +6,7 @@ class DmsessionsController < ApplicationController
   # GET /dmsessions
   # GET /dmsessions.json
   def index
-    @dmsessions = Dmsession.all.order(:date_fin).reverse_order
+    @dmsessions = Dmsession.paginate(:page => params[:page]).order(:date_fin).reverse_order
   end
 
   # GET /dmsessions/1

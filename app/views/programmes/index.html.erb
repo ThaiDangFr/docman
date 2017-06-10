@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= will_paginate %>
+
 <h1>Programmes</h1>
 
 <table>
@@ -29,6 +31,8 @@
   </tbody>
 </table>
 
-<br>
+<%= will_paginate %>
+
+<br/>
 
 <%= link_to 'Créer un nouveau programme', new_programme_path %>

@@ -1,5 +1,7 @@
 <h1>Sociétés</h1>
 
+<%= will_paginate %>
+
 <table>
   <thead>
     <tr>
@@ -28,6 +30,8 @@
   </tbody>
 </table>
 
-<br>
+<%= will_paginate %>
+
+<br/>
 
 <%= link_to 'Créer une nouvelle société', new_societe_path %>
