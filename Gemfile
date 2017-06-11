@@ -19,15 +19,15 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'carrierwave'
 gem 'mail'
 gem 'semantic-ui-sass', '~> 2.2', '>= 2.2.10.1'
+gem 'faker'
+gem 'listen', '~> 3.0.5'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rspec-rails'
   gem 'annotate'
-  gem 'faker'
 end
 
 group :test do
