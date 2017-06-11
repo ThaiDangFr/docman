@@ -71,6 +71,7 @@ nav ul li {
 nav ul li a {
   padding: 0 5px;
   font-weight: bold;
+  color:#fff;
 }
 
 nav ul li a:visited {
