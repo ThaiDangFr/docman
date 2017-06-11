@@ -2,7 +2,7 @@
 <p>
 Les administrateurs du site sont :
 <ul>
-    <% adm = User.where(:admin => true) %>
+    <% adm = User.where(:admin => true, :civilite => :Dr).order(:nom) %>
     <% adm.each do |u| %>
         <li><%= u %> : <%= u.email %></li>
     <% end unless adm.nil? %>

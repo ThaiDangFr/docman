@@ -24,7 +24,7 @@
 
   <div class="field">
     <%= f.label :responsable_id %>
-    <%= f.select :responsable_id, User.all.collect { |p| [p, "#{p.id}"]} %>
+    <%= f.select :responsable_id, User.all.order(:nom).collect { |p| [p, "#{p.id}"]} %>
   </div>
 
   <div class="field">
@@ -48,7 +48,7 @@
 
     <div class="field">
         <%= f.label :participants %><br/>
-        <% User.all.each do |user| %>
+        <% User.all.order(:nom).each do |user| %>
         <%= f.check_box :participant_ids, {:multiple => true}, user.id, nil %> <%= user %><br/>
         <% end %>
     </div>

@@ -13,7 +13,7 @@ class ReunionsController < ApplicationController
         UserMailer.notification_email(emails, @reunion).deliver_now
 
         timestamp = I18n.l Time.now
-        @reunion.historique = "Diffusée le #{timestamp} par #{current_user} à #{emails.to_sentence}."
+        @reunion.historique = "Diffusé le #{timestamp} par #{current_user} à #{emails.to_sentence}."
         @reunion.save!
         redirect_to @reunion, success: "La réunion a été diffusée par email."
     end
@@ -50,7 +50,7 @@ class ReunionsController < ApplicationController
     @reunion = Reunion.new(reunion_params)
 
     timestamp = I18n.l Time.now
-    @reunion.historique = "Créée le #{timestamp} par #{current_user}."
+    @reunion.historique = "Créé le #{timestamp} par #{current_user}."
 
     respond_to do |format|
       if @reunion.save
@@ -67,7 +67,7 @@ class ReunionsController < ApplicationController
   # PATCH/PUT /reunions/1.json
   def update
     timestamp = I18n.l Time.now
-    @reunion.historique = "Modifiée le #{timestamp} par #{current_user}."
+    @reunion.historique = "Modifié le #{timestamp} par #{current_user}."
 
     respond_to do |format|
       if @reunion.update(reunion_params)

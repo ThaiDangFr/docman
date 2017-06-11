@@ -1,7 +1,7 @@
 <h1>Aide</h1>
 <% if !signed_in? %>
 <p>
-Veuillez vous <%= link_to "identifier", signin_path %> avec le compte qui vous a été communiqué. Si vous n'en avez pas, contactez l'administrateur du site.
+Veuillez vous <%= link_to "identifier", signin_path %> avec le compte qui vous a été communiqué. Si vous n'en avez pas, contactez un <%= link_to "administrateur", contact_path %> du site.
 </p>
 <% else %>
 <h5>Astuce</h5>
