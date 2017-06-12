@@ -19,7 +19,7 @@ module ReunionsHelper
         # responsable de programme
         emails.push(reunion.dmsession.programme.responsable.email)        
 
-        return emails
+        return emails.uniq
     end
 
 end
