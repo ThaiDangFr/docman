@@ -46,4 +46,8 @@ class DocumentUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+    def exists?
+        File.exists? Pathname(root).join(store_path)
+    end
+
 end

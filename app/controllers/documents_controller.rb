@@ -64,7 +64,21 @@ class DocumentsController < ApplicationController
     end
 
     def add_more_documents(new_documents)
+        alldocs = []
         documents = @objectdm.documents
+
+        for i in 0..documents.count-1
+            alldocs.push(documents[i].file.filename)
+        end
+
+        # control
+        for i in 0..new_documents.count-1
+            if new_documents[i].original_filename.in? alldocs
+                flash[:error] = "Fichier déjà existant, le supprimer avant"
+                return
+            end
+        end
+
         documents += new_documents
         @objectdm.documents = documents
     end
