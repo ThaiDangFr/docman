@@ -12,7 +12,7 @@
       <th>Lieu</th>
       <th>Ordre du jour</th>
       <th>Session</th>
-      <th colspan="5"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -33,6 +33,7 @@
             <% if nb_present != 0 %>
                 <%= link_to "Rôles(#{reunion.count_roles})", reunion_roles_path(reunion) %>
             <% end %>
+            <%= link_to "Fichiers(#{reunion.documents.count})", reunion_documents_path(reunion) %>
         <% end %>
         </td>
 
@@ -40,7 +41,6 @@
         
         <% if current_user.canModifyReunion?(reunion.id) %>
         <td><%= link_to 'Modifier', edit_reunion_path(reunion), class: "ui mini button label orange" %></td>
-        <td><%= link_to "Diffuser",diffuser_reunion_path(reunion), data: {confirm: 'Etes-vous sûr de vouloir diffuser le compte-rendu de réunion ?' }, class: "ui mini button label violet" %></td>
         <% end %>
 
         <% if current_user.canDeleteReunion?(reunion.id) %>

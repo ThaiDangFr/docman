@@ -33,33 +33,9 @@
         </div>
     <% end %>
 
-
   <div class="actions">
     <%= f.submit "Enregistrer", class: "ui button blue mini" %>
   </div>
-
-    <hr/>
-
-    <% if reunion.documents.count != 0 %>
-    <br/>
-    <div class="field"/>
-        <%= f.label "Documents" %><br/>
-        <% reunion.documents.each_with_index do |p,i| %>
-            <%= link_to "#{p.path.split('/').last}", p.url, target: "_blank" %> <%= link_to "(supprimer)", reunion_document_path(@reunion, i), :method => :delete, data: {confirm: "Etes-vous certain de supprimer ?" } %><br/>
-        <% end %>
-    </div>
-    <% end %>
 <% end %>
 
-<% if !reunion.id.nil? %>
-    <%= form_for reunion, url: reunion_documents_path(reunion), method: :post do |f| %>
-        <div class="field">
-            <%= f.label "Ajouter des documents" %><br/>
-            <%= f.file_field :documents, multiple: true %>
-        </div>
-        <div class="actions">
-            <%= f.submit "Ajouter", class: "ui button mini blue" %>
-        </div>
-    <% end %>
-<% end %>
 

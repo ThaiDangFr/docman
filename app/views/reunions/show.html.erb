@@ -49,5 +49,6 @@
 </p>
 
 
-<% if current_user.canModifyReunion?(@reunion.id) %><%= link_to 'Modifier', edit_reunion_path(@reunion), class: "ui button mini" %> |
+<% if current_user.canModifyReunion?(@reunion.id) %>
+<%= link_to "Diffuser",diffuser_reunion_path(@reunion), data: {confirm: 'Etes-vous sûr de vouloir diffuser le compte-rendu de réunion ?' }, class: "ui button mini violet" %> | <%= link_to 'Modifier', edit_reunion_path(@reunion), class: "ui button mini" %> |
 <% end %><%= link_to 'Retour', reunions_path, class: "ui button mini" %>

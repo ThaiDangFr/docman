@@ -2,7 +2,7 @@ Rails.application.routes.draw do
     resources :reunions do
         resources :presences, :only => [:create, :index]
         resources :roles, :only => [:index, :update]
-        resources :documents, :only => [:create, :destroy]
+        resources :documents, :only => [:index, :create, :destroy]
 
         member do
             get :diffuser

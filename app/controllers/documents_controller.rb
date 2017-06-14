@@ -4,6 +4,9 @@ class DocumentsController < ApplicationController
     before_action :control_rights
     #before_action :admin_user
 
+    def index
+    end
+
     def create
         add_more_documents(documents_params[:documents])
         flash[:error] = "Erreur lors de l'ajout de document" unless @objectdm.save

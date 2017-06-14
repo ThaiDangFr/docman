@@ -48,11 +48,8 @@
 
     <div class="field">
         <%= f.label :participants %><br/>
-        <% User.all.order(:nom).each do |user| %>
-        <%= f.check_box :participant_ids, {:multiple => true}, user.id, nil %> <%= user %><br/>
-        <% end %>
-    </div>
-
+        <%= f.select :participant_ids, User.all.order(:nom).collect { |p| [p, "#{p.id}"]},  {prompt: 'Choisissez des participants', include_hidden: false }, { multiple: true, class: "ui search fluid dropdown"}  %>
+    </div> 
 
 
   <div class="actions">
