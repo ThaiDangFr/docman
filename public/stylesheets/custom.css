@@ -3,13 +3,32 @@
   width: 850px;
 }
 
+
+header .logo {
+background-image: url("/images/logo_ep.png");
+background-repeat:no-repeat;
+padding: 0px;
+margin: 0px;
+width: 120px;
+height: 68px;
+}
+
+header a.logo {
+  color: transparent;
+  font-size: 150%;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  text-transform: lowercase;
+}
+
 body {
-    /*background:#fff;*/
     background-color:#F5F8FA;
 }
 
 header {
-  padding-top: 20px;
+    padding-top: 20px;
+    margin-bottom:50px;
 }
 
 header img {
