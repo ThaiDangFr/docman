@@ -11,7 +11,7 @@
       <th>Date de début</th>
       <th>Date de fin</th>
       <th>Responsable</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -21,8 +21,9 @@
         <td><%= programme.titre %></td>
         <td><%= I18n.l programme.date_debut unless programme.date_debut.nil? %></td>
         <td><%= I18n.l programme.date_fin unless programme.date_fin.nil? %></td>
-    
         <td><%=  programme.responsable %></td>
+ 
+        <td><%= link_to "Fichiers(#{programme.documents.count})", programme_documents_path(programme) %></td> 
         <td><%= link_to 'Voir', programme, class: "ui button mini label green" %></td>
         <td><%= link_to 'Modifier', edit_programme_path(programme), class: "ui button mini label orange" %></td>
         <td><%= link_to 'Supprimer', programme, method: :delete, data: { confirm: 'Etes-vous sûr ?' }, class: "ui button mini label red" %></td>

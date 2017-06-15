@@ -34,32 +34,4 @@
     <%= f.submit "Enregistrer", class: "ui button blue mini" %>
   </div>
 
-<hr/>
-
-
-    <% if programme.documents.count != 0 %>
-    <br/>
-    <div class="field">
-        <%= f.label "Documents types associés" %><br/>
-        <% programme.documents.each_with_index do |p,i| %>
-        <%= link_to "#{p.path.split('/').last}", p.url, target: "_blank" %> <%= link_to "(supprimer)", programme_document_path(@programme, i), :method => :delete, data: {confirm: "Etes-vous certain de supprimer ?" } %><br/>
-        <% end %>
-    </div>
-    <% end %>
-
 <% end %>
-
-
-<% if !programme.id.nil? %>
-<%= form_for programme, url: programme_documents_path(programme), method: :post do |f| %>
-    <div class="field">
-        <%= f.label "Ajouter des documents types" %><br/>
-        <%= f.file_field :documents, multiple: true, required: true %>
-    </div>
-    <div class="actions">
-        <%= f.submit "Ajouter", class: "ui mini button blue" %>
-    </div>
-<% end %>
-<% end %>
-
-

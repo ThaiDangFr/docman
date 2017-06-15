@@ -10,11 +10,11 @@ Rails.application.routes.draw do
     end
 
     resources :dmsessions do
-        resources :documents, :only => [:create, :destroy]
+        resources :documents, :only => [:index, :create, :destroy]
     end
 
     resources :programmes do
-        resources :documents, :only => [:create, :destroy]
+        resources :documents, :only => [:index, :create, :destroy]
     end
 
     resources :societes

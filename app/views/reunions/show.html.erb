@@ -37,7 +37,7 @@
 
 <p>
   <strong>Session:</strong>
-  "<%= @reunion.dmsession.titre %>" avec <%= @reunion.dmsession.responsable %> et <%= @reunion.dmsession.medecin_referent %><br/>
+  "<%= @reunion.dmsession.titre %>" avec <%= @reunion.dmsession.responsable %> (responsable) et <%= @reunion.dmsession.medecin_referent %> (médecin référent)<br/>
   <%= @reunion.dmsession.description %><br/>
   <% @reunion.dmsession.documents.each do |p| %>
   <%= link_to "#{p.path.split('/').last}", p.url, target: "_blank" %><br/>
