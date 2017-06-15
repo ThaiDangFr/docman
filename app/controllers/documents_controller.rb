@@ -8,8 +8,13 @@ class DocumentsController < ApplicationController
     end
 
     def create
-        add_more_documents(documents_params[:documents])
-        flash[:error] = "Erreur lors de l'ajout de document" unless @objectdm.save
+        #puts "LOG #{params.to_yaml}"
+        if params[:reunion].nil?
+            flash[:error] = "Il faut d'abord sélectionner un document pour pouvoir l'ajouter"
+        else     
+            add_more_documents(documents_params[:documents])
+            flash[:error] = "Erreur lors de l'ajout de document" unless @objectdm.save
+        end
         redirect_to :back
     end
 

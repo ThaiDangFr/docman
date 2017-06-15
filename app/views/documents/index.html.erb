@@ -16,7 +16,7 @@
     <%= form_for @objectdm, url: send("#{@objectdm.class.to_s.downcase}_documents_path",@objectdm),  method: :post do |f| %>
         <div class="field">
             <%= f.label "Ajouter des documents" %><br/>
-            <%= f.file_field :documents, multiple: true %>
+            <%= f.file_field :documents, multiple: true, required: true %>
         </div>
         <div class="actions">
             <%= f.submit "Ajouter", class: "ui button mini blue" %>
