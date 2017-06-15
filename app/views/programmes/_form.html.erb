@@ -54,7 +54,7 @@
 <%= form_for programme, url: programme_documents_path(programme), method: :post do |f| %>
     <div class="field">
         <%= f.label "Ajouter des documents types" %><br/>
-        <%= f.file_field :documents, multiple: true %>
+        <%= f.file_field :documents, multiple: true, required: true %>
     </div>
     <div class="actions">
         <%= f.submit "Ajouter", class: "ui mini button blue" %>
