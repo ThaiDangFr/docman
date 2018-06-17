@@ -6,7 +6,7 @@ class PresencesController < ApplicationController
     #before_action :admin_user
 
     def index   
-        @tous_les_participants = Reunion.find(params[:reunion_id]).dmsession.participants
+        @tous_les_participants = Reunion.find(params[:reunion_id]).dmsession.participants.order(:nom)
     end
 
     def create

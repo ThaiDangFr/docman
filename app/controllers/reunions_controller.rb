@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class ReunionsController < ApplicationController
     before_action :set_reunion, only: [:show, :edit, :update, :destroy, :diffuser]
     before_action :authenticate
@@ -24,8 +25,8 @@ class ReunionsController < ApplicationController
   # GET /reunions
   # GET /reunions.json
   def index
-    #@reunions = Reunion.all.order(:date_debut).reverse_order
-    @reunions = viewable_reunions.paginate(:page => params[:page],:per_page => 5)
+    #@reunions = viewable_reunions.paginate(:page => params[:page],:per_page => 10)
+    @reunions = viewable_reunions.paginate(:page => params[:page])
   end
 
   # GET /reunions/1
