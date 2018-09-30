@@ -1,0 +1,11 @@
+    <%= form_for @storage, url: {action: "create"},  method: :post do |f| %>
+    <%= render 'shared/error_messages', :object => f.object %>
+
+        <div class="field">
+            <%= f.label "Choisir un ou des documents" %><br/>
+            <%= f.file_field :documents, multiple: true, required: true %>
+        </div>
+        <div class="actions">
+            <%= f.submit "Valider", class: "ui button mini blue" %> <%= link_to 'Annuler', storage_path,class: "ui button mini blue" %>
+        </div>
+    <% end %>

@@ -1,0 +1,32 @@
+<h1>Documents personnels</h1>
+
+<%= will_paginate %>
+
+<% #if not @current_user.storage.empty? %>
+<% if not @storage.empty? %>
+<table>
+	<thead>
+		<tr>
+			<th>Fichier</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% #@current_user.storage.each do |p| %>
+		<% @storage.each do |p| %>
+		<tr>
+			<td>
+				<%= link_to "#{p.path.split('/').last}", p.url, target: "_blank" %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<% else %>
+Aucun
+<% end %>
+
+<%= will_paginate %>
+
+<br/>
+<%= link_to 'Ajouter', storage_add_path,class: "ui button blue" %>
