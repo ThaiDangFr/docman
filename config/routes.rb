@@ -21,10 +21,8 @@ Rails.application.routes.draw do
     resources :users
     resources :sessions, :only => [:new, :create, :destroy]
 
-    get 'storage/add'
-    get 'storage/delete'
-    get 'storage/download'
-    post 'storage/create'
+    get 'storage/add' # page pour uploader les documents
+    resources :storage # cf https://guides.rubyonrails.org/routing.html
 
     match '/mesreunions', to: 'reunions#index', via: [:get]
     match '/signup', to: 'users#new', via: [:get]
@@ -33,7 +31,6 @@ Rails.application.routes.draw do
     match '/contact', to: 'pages#contact', via: [:get]
     match '/about', to: 'pages#about', via: [:get]
     match '/help', to: 'pages#help', via: [:get]
-    match '/storage', to: 'storage#index', via: [:get]
     root :to => 'pages#home'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

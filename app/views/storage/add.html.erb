@@ -6,6 +6,6 @@
             <%= f.file_field :documents, multiple: true, required: true %>
         </div>
         <div class="actions">
-            <%= f.submit "Valider", class: "ui button mini blue" %> <%= link_to 'Annuler', storage_path,class: "ui button mini blue" %>
+            <%= f.submit "Valider", class: "ui button mini blue" %> <%= link_to 'Annuler', storage_index_path,class: "ui button mini blue" %>
         </div>
     <% end %>

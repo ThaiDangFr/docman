@@ -15,7 +15,7 @@ class StorageController < ApplicationController
     redirect_to action: "index"
   end
 
-  def delete
+  def destroy
     remove_document_at_index(params[:id].to_i)
     flash[:error] = "Erreur lors de la suppression de document" unless @current_user.save
     redirect_to action: "index"
