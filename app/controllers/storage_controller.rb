@@ -4,28 +4,50 @@ class StorageController < ApplicationController
   before_action :authenticate
 
   def add
-  	@storage = @current_user
+    @storage = @current_user
   end
 
-    def create
+  def create
     add_more_documents(documents_params[:documents])
-     
+
     flash[:error] = "Erreur lors de l'ajout de document" unless @current_user.save
 
     redirect_to action: "index"
   end
 
-  def destroy
-    remove_document_at_index(params[:id].to_i)
-    flash[:error] = "Erreur lors de la suppression de document" unless @current_user.save
-    redirect_to action: "index"
-  end
+  #  def destroy
+  #    remove_document_at_index(params[:id].to_i)
+  #    flash[:error] = "Erreur lors de la suppression de document" unless @current_user.save
+  #    redirect_to action: "index"
+  #  end
 
   def index
     @storage = @current_user.documents.paginate(:page => params[:page])
   end
 
+  # exemple ici : https://stackoverflow.com/questions/12711178/rails-3-delete-multiple-records-using-checkboxes
+  def destroy_multiple
+    todel = params[:document_index]
 
+    if not todel.nil? and not todel.empty?
+      size = todel.size
+      na = todel.map { |x| x.to_i }.sort.reverse
+      na.each do |index|
+        remove_document_at_index(index)
+      end
+
+      if @current_user.save
+        flash[:success] = "#{size} #{'document'.pluralize(size)} #{'supprimé'.pluralize(size)}"
+      else
+        flash[:error] = "Erreur lors de la suppression de document"
+      end
+
+    else
+      flash[:error] = "Veuillez sélectionner au moins un fichier à supprimer"
+    end
+
+    redirect_to action: "index"
+  end
 
 
   private
@@ -68,7 +90,7 @@ class StorageController < ApplicationController
   end
 
   def documents_params
-  	params.require(:user).permit({documents: []})
+    params.require(:user).permit({documents: []})
   end
 
 

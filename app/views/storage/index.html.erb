@@ -2,28 +2,33 @@
 
 <%= will_paginate %>
 
-<% #if not @current_user.storage.empty? %>
 <% if not @storage.empty? %>
+<%= form_tag destroy_multiple_storage_index_path, method: :delete do %>
 <table>
 	<thead>
 		<tr>
 			<th>Fichier</th>
+			<th>Taille</th>
 		</tr>
 	</thead>
 
 	<tbody>
-		<% #@current_user.storage.each do |p| %>
 		<% @storage.each_with_index do |p,i| %>
+
 		<tr>
 			<td>
+				<%= check_box_tag "document_index[]", @storage.offset + i %>
 				<%= link_to "#{p.path.split('/').last}", p.url, target: "_blank" %>
-				<%= link_to "(supprimer)", send("storage_path",@storage.offset + i), :method => :delete, data: {confirm: "Etes-vous certain de supprimer ?" } %><br/>
-
 			</td>
+			<td><%= number_to_human_size(File.size(p.path)) %></td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
+<% if not @storage.empty? %>
+<%= submit_tag "Supprimer la sélection", class: "ui button red mini", data: {confirm: "Etes-vous certain de supprimer ?" } %>
+<% end %>
+<% end #form_for %>
 <% else %>
 Aucun
 <% end %>
