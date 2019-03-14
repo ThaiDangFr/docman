@@ -5,7 +5,7 @@ namespace :db do
 	task :populate => :environment do
 		#Rake::Task["db.reset"].invoke
 		system('rake db:reset')
-		administrateur = User.create!(:nom => "Admin", :prenom => "Admin", :email => "example@railstutorial.org", :password => "foobar", :password_confirmation => "foobar")
+		administrateur = User.create!(:nom => "Admin", :prenom => "Admin", :email => "example@railstutorial.org", :password => "foobar")
 		administrateur.toggle!(:admin)	
 
                 5.times do |n|
@@ -29,7 +29,7 @@ namespace :db do
                         ville = Faker::Address.city
                         telephone = Faker::PhoneNumber.phone_number
 			password = "motdepasse"
-			User.create!(civilite: civilite, :nom => nom, prenom: prenom, :email => email, profil: profil, societe_id: societe_id, adresse: adresse, code_postal: code_postal, ville: ville, telephone: telephone, :password => password, :password_confirmation => password)
+			User.create!(civilite: civilite, :nom => nom, prenom: prenom, :email => email, profil: profil, societe_id: societe_id, adresse: adresse, code_postal: code_postal, ville: ville, telephone: telephone, :password => password)
 		end
 
 	end
