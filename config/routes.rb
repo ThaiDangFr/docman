@@ -21,6 +21,13 @@ Rails.application.routes.draw do
     resources :users
     resources :sessions, :only => [:new, :create, :destroy]
 
+    get 'storage/add' # page pour uploader les documents
+    resources :storage do # cf https://guides.rubyonrails.org/routing.html
+        collection do
+            delete 'destroy_multiple'
+        end
+    end 
+
     match '/mesreunions', to: 'reunions#index', via: [:get]
     match '/signup', to: 'users#new', via: [:get]
     match '/signin',  to: 'sessions#new', via: [:get]

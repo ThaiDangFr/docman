@@ -33,7 +33,7 @@ has_many :relation_dmsession_users, :foreign_key => "user_id", :dependent => :de
 has_many :participant_des_sessions, :through => :relation_dmsession_users, :source => :dmsession
 has_many :relation_reunion_users, :foreign_key => "user_id", :dependent => :destroy
 has_many :present_des_reunions, :through => :relation_reunion_users, :source => :reunion
-
+mount_uploaders :documents, DocumentUploader
 
 
 email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -46,8 +46,9 @@ validates :email, :presence => true,
 
 # cree automatiquement l'attribut virtuel password_confirmation
 validates :password, :presence => true,
-             :confirmation => true,
-             :length => { :within => 6..40 }
+#             :confirmation => true,
+             :length => { :within => 6..40 }, :on => :create
+
 
 validates_inclusion_of :civilite, :in => ['M', 'Mme', 'Dr', nil]
 validates_inclusion_of :profil, :in => ['participant', 'médecin référent','évaluateur', nil]
@@ -180,7 +181,9 @@ before_save :encrypt_password
 
     def encrypt_password
         self.salt = make_salt if new_record?
-        self.encrypted_password = encrypt(password)
+        #self.encrypted_password = encrypt(password) if new_record?
+
+        self.encrypted_password = encrypt(password) unless (password.nil? or password.empty?)
     end
 
     def encrypt(string)
