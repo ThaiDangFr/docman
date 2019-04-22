@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= titre %></title>
+    <%= csrf_meta_tag %>
+    <%= render 'layouts/stylesheets' %>
+    <%= javascript_include_tag :application %>
+    <%= javascript_include_tag :initsemanticui %>
+  </head>
+  <body>
+    <div class="container">
+      <section class="round">
+	<%= yield %>
+      </section>
+    </div>
+  </body>
+</html>

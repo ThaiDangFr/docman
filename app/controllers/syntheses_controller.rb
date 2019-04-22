@@ -8,6 +8,7 @@ class SynthesesController < ApplicationController
   end
 
   def show
+    render(:layout => "layouts/synthese")
   end
 
   private

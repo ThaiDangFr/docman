@@ -1,4 +1,10 @@
-<p id="notice"><%= notice %></p>
+<table class="print-noborder">
+<tr class="print-noborder">
+  <td class="print-noborder"><img src="/images/logo_ep.png"/></td>
+  <td class="print-noborder">L'Evaluation des Pratiques Professionnelles : Un plus pour la Santé au Travail</td>
+  <td class="print-hide"><%= link_to 'Imprimer', '#', :onclick => 'window.print();return false;', class: "ui button mini" %></td>
+</tr>
+</table>
 
 <p>
   <h3><%= @synthese.programme.titre unless @synthese.programme.nil? %></h3>
@@ -38,7 +44,7 @@
     <tr>
       <td>Feuille émargement</td>
       <% 1.upto(totalseance) do |i| %>
-      <td><select class="ui"><option>Oui</option><option>Non</option></select></td>
+      <td><select class="print-noborder"><option>Oui</option><option>Non</option></select></td>
       <% end %>
       <td><input type="text" value="<%= totalseance %>" size="2" /></td>
     </tr>
@@ -46,7 +52,7 @@
     <tr>
       <td>Compte rendu</td>
       <% 1.upto(totalseance) do |i| %>
-      <td><select class="ui"><option>Oui</option><option>Non</option></select></td>      
+      <td><select class="print-noborder"><option>Oui</option><option>Non</option></select></td>      
       <% end %>
       <td><input type="text" value="<%= totalseance %>" size="2" /></td>
     </tr>
@@ -54,7 +60,7 @@
     <tr>
       <td>Préconisation d'amélioration</td>
       <% 1.upto(totalseance) do |i| %>
-      <td><select class="ui"><option>Oui</option><option>Non</option></select></td>
+      <td><select class="print-noborder"><option>Oui</option><option>Non</option></select></td>
       <% end %>
       <td><input type="text" value="<%= totalseance %>" size="2" /></td>
     </tr>
@@ -62,7 +68,7 @@
     <tr>
       <td>Suivi des améliorations</td>
       <% 1.upto(totalseance) do |i| %>
-      <td><select class="ui"><option>Oui</option><option>Non</option></select></td>
+      <td><select class="print-noborder"><option>Oui</option><option>Non</option></select></td>
       <% end %>
       <td><input type="text" value="<%= totalseance %>" size="2" /></td>
     </tr>
@@ -122,7 +128,7 @@
 
       <td><%= etat %></td>
       <% end %>
-      <td><select class="ui"><option>Positive</option><option>Négative</option></select></td>
+      <td><select class="print-noborder"><option>Positive</option><option>Négative</option></select></td>
     </tr>
     <% end %>
 
@@ -140,4 +146,24 @@
 </div>
 </p>
 
-<%= link_to 'Imprimer', 'your_link_here', :onclick => 'window.print();return false;', class: "ui button mini" %>
+<table class="print-smalltext print-noborder">
+<tr class="print-noborder">
+  <td class="print-noborder"><img src="/images/logo_ep.png"/></td>
+  <td class="print-noborder">
+    <ul style="list-style: none;">
+      <li>Déclaration d'activité 11 94 07857 94</li>
+      <li>ANDPC 1136</li>
+      <li>N°Siret : 508 447 489 000 16</li>
+      <li>APE : 9499Z</li>
+    </ul>
+  </td>
+  <td class="print-noborder">
+    <ul style="list-style: none;">
+      <li>236 bis avenue Pierre Brossolette</li>
+      <li>94170 LE PERREUX</li>
+      <li>Site : http://www.ep-plus.org</li>
+      <li>Contact : secretariat@ep-plus.org</li>
+    </ul>
+  </td>
+</tr>
+</table>
