@@ -1,0 +1,37 @@
+<%= will_paginate @syntheses %>
+
+<h1>Synthèses des sessions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Date de début</th>
+      <th>Date de fin</th>
+      <th>Programme</th>
+      <th>Responsable</th>
+      <th>Médecin référent</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @syntheses.each do |synthese| %>
+      <tr>
+        <td><%= synthese.titre %></td>
+        <td><%= I18n.l synthese.date_debut %></td>
+        <td><%= I18n.l synthese.date_fin %></td>
+        <td><%= synthese.programme.titre unless synthese.programme.nil? %></td>
+        <td><%= synthese.responsable %></td>
+        <td><%= synthese.medecin_referent %></td>
+
+        <td><%= link_to 'Voir', synthesis_path(:id => synthese.id), class: "ui button mini label green", target: "_blank" %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @syntheses %>
+
+<br/>

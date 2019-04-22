@@ -80,4 +80,13 @@ class Reunion < ApplicationRecord
         rru = relation_reunion_users.find_by_user_id(user_id)
         rru.user_role
     end
+
+    def isPresent?(user_id)
+      rru = relation_reunion_users.find_by_user_id(user_id)
+      if rru.nil? 
+        return false
+      else
+        return true
+      end
+    end
 end

@@ -1,0 +1,143 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h3><%= @synthese.programme.titre unless @synthese.programme.nil? %></h3>
+</p>
+
+<p>
+  Nom du médecin évaluateur : <%= @synthese.medecin_referent %>
+</p>
+
+<p><strong><u>EVALUATION DU GROUPE</u></strong></p>
+
+<p>
+  <strong>Identifiant du Groupe</strong> : <%= @synthese.titre %>
+</p>
+
+<p>
+  <strong>Nom du correspondant du groupe</strong> : <%= @synthese.responsable %>
+</p>
+
+<% totalseance = @synthese.reunions.length %>
+<table class="ui celled table">
+  <thead>
+  <tr>
+    <th>Séances</th>
+
+    <% i = 1 %>
+    <% @synthese.reunions.order(:date_debut).each do |r| %>
+    <th><div class="ui tiny icon button" data-tooltip="<%= r.ordre_du_jour %>"><%= i %></div></th>
+    <% i=i+1 %>
+    <% end %>
+
+    <th>Total</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>Feuille émargement</td>
+      <% 1.upto(totalseance) do |i| %>
+      <td><select class="ui"><option>Oui</option><option>Non</option></select></td>
+      <% end %>
+      <td><input type="text" value="<%= totalseance %>" size="2" /></td>
+    </tr>
+
+    <tr>
+      <td>Compte rendu</td>
+      <% 1.upto(totalseance) do |i| %>
+      <td><select class="ui"><option>Oui</option><option>Non</option></select></td>      
+      <% end %>
+      <td><input type="text" value="<%= totalseance %>" size="2" /></td>
+    </tr>
+
+    <tr>
+      <td>Préconisation d'amélioration</td>
+      <% 1.upto(totalseance) do |i| %>
+      <td><select class="ui"><option>Oui</option><option>Non</option></select></td>
+      <% end %>
+      <td><input type="text" value="<%= totalseance %>" size="2" /></td>
+    </tr>
+
+    <tr>
+      <td>Suivi des améliorations</td>
+      <% 1.upto(totalseance) do |i| %>
+      <td><select class="ui"><option>Oui</option><option>Non</option></select></td>
+      <% end %>
+      <td><input type="text" value="<%= totalseance %>" size="2" /></td>
+    </tr>
+  </tbody>
+
+</table>
+
+<p><i>* = non adapté</i></p>
+
+<h4><strong>Evaluation globale du travail du groupe</strong></h4>
+<p>
+<div class="ui checkbox">
+  <input type="checkbox" name="evaluation_positive">
+  <label>Evaluation positive</label>
+</div>
+</p>
+<p>
+<div class="ui checkbox">
+  <input type="checkbox" name="evaluation_negative">
+  <label>Evaluation négative</label>
+</div>
+</p>
+
+
+<table class="ui celled table">
+  <thead>
+  <tr>
+    <th>Séances</th>
+
+    <% i = 1 %>
+    <% @synthese.reunions.order(:date_debut).each do |r| %>
+    <th><div class="ui tiny icon button" data-tooltip="<%= r.titre + ':' + r.ordre_du_jour %>"><%= i %></div></th>
+    <% i=i+1 %>
+    <% end %>
+
+    <th>Evaluation</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <% @synthese.participants.each do |p| %>
+    <tr>
+      <td><%= p %></td>
+      <% @synthese.reunions.order(:date_debut).each do |r| %>
+
+      <% 
+	 if r.isPresent?(p.id)
+	 etat = ""
+	 role = r.getrole(p.id)
+	 if not role.nil?
+	 etat = role[0].upcase
+	 end
+	 else
+	 etat = "X"
+	 end 
+	 %>
+
+      <td><%= etat %></td>
+      <% end %>
+      <td><select class="ui"><option>Positive</option><option>Négative</option></select></td>
+    </tr>
+    <% end %>
+
+  </tbody>
+</table>
+
+<p><i>Mettre un <strong>X</strong> lorsque le médecin était absent à la séance ou <strong>S</strong> s'il a assuré le rôle de secrétaire et <strong>M</strong> pour la modération</i></p>
+
+<p>
+<div class="ui form">
+  <div class="field">
+    <label>Signature médecin évaluateur</label>
+    <textarea></textarea>
+  </div>
+</div>
+</p>
+
+<%= link_to 'Imprimer', 'your_link_here', :onclick => 'window.print();return false;', class: "ui button mini" %>

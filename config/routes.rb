@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  #get 'syntheses/index'
+  #get 'syntheses/show'
+
+
+   resources :syntheses, :only => [:index, :show]
+
     resources :reunions do
         resources :presences, :only => [:create, :index]
         resources :roles, :only => [:index, :update]
