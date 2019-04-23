@@ -32,7 +32,7 @@
 
     <% i = 1 %>
     <% @synthese.reunions.order(:date_debut).each do |r| %>
-    <th><div class="ui tiny icon button" data-tooltip="<%= r.titre + ':' + r.ordre_du_jour %>"><%= i %></div></th>
+    <th><div class="ui tiny icon button" data-tooltip="<%= r.titre + ':' + r.ordre_du_jour %>"><%= link_to i, r, target: "_blank" %></div></th>
     <% i=i+1 %>
     <% end %>
 
@@ -51,10 +51,20 @@
 
     <tr>
       <td>Compte rendu</td>
-      <% 1.upto(totalseance) do |i| %>
-      <td><select class="print-noborder"><option>Oui</option><option>Non</option><option>*</option></select></td>      
+
+      <% nb_compte_rendu_oui = 0 %>
+      <% @synthese.reunions.order(:date_debut).each do |r| %>
+      <% etat = r.documents.count > 0 ? "Oui" : "Non" %>
+
+      <% if etat == "Oui" %>
+      <% nb_compte_rendu_oui = nb_compte_rendu_oui + 1 %>
       <% end %>
-      <td><input class="print-noborder" type="text" value="<%= totalseance %>" size="2" /></td>
+
+      <td><%= select_tag "compte_rendu", options_for_select([["Oui", "Oui"], ["Non", "Non"], ["*", "*"]], etat), {class: 'print-noborder'} %></td>
+      <% end %>
+
+
+      <td><input class="print-noborder" type="text" value="<%= nb_compte_rendu_oui %>" size="2" /></td>
     </tr>
 
     <tr>
@@ -109,7 +119,7 @@
 
     <% i = 1 %>
     <% @synthese.reunions.order(:date_debut).each do |r| %>
-    <th><div class="ui tiny icon button" data-tooltip="<%= r.titre + ':' + r.ordre_du_jour %>"><%= i %></div></th>
+    <th><div class="ui tiny icon button" data-tooltip="<%= r.titre + ':' + r.ordre_du_jour %>"><%= link_to i, r, target: "_blank" %></div></th>
     <% i=i+1 %>
     <% end %>
 
