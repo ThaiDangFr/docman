@@ -44,7 +44,7 @@
     <tr>
       <td>Feuille émargement</td>
       <% 1.upto(totalseance) do |i| %>
-      <td><select class="print-noborder"><option>Oui</option><option>Non</option></select></td>
+      <td><select class="print-noborder"><option>Oui</option><option>Non</option><option>*</option></select></td>
       <% end %>
       <td><input class="print-noborder" type="text" value="<%= totalseance %>" size="2" /></td>
     </tr>
@@ -52,7 +52,7 @@
     <tr>
       <td>Compte rendu</td>
       <% 1.upto(totalseance) do |i| %>
-      <td><select class="print-noborder"><option>Oui</option><option>Non</option></select></td>      
+      <td><select class="print-noborder"><option>Oui</option><option>Non</option></select><option>*</option></td>      
       <% end %>
       <td><input class="print-noborder" type="text" value="<%= totalseance %>" size="2" /></td>
     </tr>
@@ -60,7 +60,7 @@
     <tr>
       <td>Préconisation d'amélioration</td>
       <% 1.upto(totalseance) do |i| %>
-      <td><select class="print-noborder"><option>Oui</option><option>Non</option></select></td>
+      <td><select class="print-noborder"><option>Oui</option><option>Non</option></select><option>*</option></td>
       <% end %>
       <td><input class="print-noborder" type="text" value="<%= totalseance %>" size="2" /></td>
     </tr>
@@ -68,7 +68,7 @@
     <tr>
       <td>Suivi des améliorations</td>
       <% 1.upto(totalseance) do |i| %>
-      <td><select class="print-noborder"><option>Oui</option><option>Non</option></select></td>
+      <td><select class="print-noborder"><option>Oui</option><option>Non</option></select><option>*</option></td>
       <% end %>
       <td><input class="print-noborder" type="text" value="<%= totalseance %>" size="2" /></td>
     </tr>
@@ -78,20 +78,29 @@
 
 <p><i>* = non adapté</i></p>
 
-<h4><strong>Evaluation globale du travail du groupe</strong></h4>
-<p>
-<div class="ui checkbox">
-  <input type="checkbox" name="evaluation_positive">
-  <label>Evaluation positive</label>
-</div>
-</p>
-<p>
-<div class="ui checkbox">
-  <input type="checkbox" name="evaluation_negative">
-  <label>Evaluation négative</label>
-</div>
-</p>
+<table class="ui celled table">
+<thead>
+  <tr><th colspan="2"><label>Evaluation globale du travail du groupe</label></th></tr>
+</thead>
+<tbody>
+  <tr>
+    <td>
+      <div class="ui checkbox">
+	<input type="checkbox" name="evaluation_positive">
+	<label>Evaluation positive</label>
+      </div>
+    </td>
+    <td>
+      <div class="ui checkbox">
+	<input type="checkbox" name="evaluation_negative">
+	<label>Evaluation négative</label>
+      </div>
+    </td>
+  </tr>
+</tbody>
+</table>
 
+<p/>
 
 <table class="ui celled table">
   <thead>
