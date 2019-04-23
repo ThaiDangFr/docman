@@ -32,7 +32,7 @@
 
     <% i = 1 %>
     <% @synthese.reunions.order(:date_debut).each do |r| %>
-    <th><div class="ui tiny icon button" data-tooltip="<%= r.ordre_du_jour %>"><%= i %></div></th>
+    <th><div class="ui tiny icon button" data-tooltip="<%= r.titre + ':' + r.ordre_du_jour %>"><%= i %></div></th>
     <% i=i+1 %>
     <% end %>
 
@@ -46,7 +46,7 @@
       <% 1.upto(totalseance) do |i| %>
       <td><select class="print-noborder"><option>Oui</option><option>Non</option></select></td>
       <% end %>
-      <td><input type="text" value="<%= totalseance %>" size="2" /></td>
+      <td><input class="print-noborder" type="text" value="<%= totalseance %>" size="2" /></td>
     </tr>
 
     <tr>
@@ -54,7 +54,7 @@
       <% 1.upto(totalseance) do |i| %>
       <td><select class="print-noborder"><option>Oui</option><option>Non</option></select></td>      
       <% end %>
-      <td><input type="text" value="<%= totalseance %>" size="2" /></td>
+      <td><input class="print-noborder" type="text" value="<%= totalseance %>" size="2" /></td>
     </tr>
 
     <tr>
@@ -62,7 +62,7 @@
       <% 1.upto(totalseance) do |i| %>
       <td><select class="print-noborder"><option>Oui</option><option>Non</option></select></td>
       <% end %>
-      <td><input type="text" value="<%= totalseance %>" size="2" /></td>
+      <td><input class="print-noborder" type="text" value="<%= totalseance %>" size="2" /></td>
     </tr>
 
     <tr>
@@ -70,7 +70,7 @@
       <% 1.upto(totalseance) do |i| %>
       <td><select class="print-noborder"><option>Oui</option><option>Non</option></select></td>
       <% end %>
-      <td><input type="text" value="<%= totalseance %>" size="2" /></td>
+      <td><input class="print-noborder" type="text" value="<%= totalseance %>" size="2" /></td>
     </tr>
   </tbody>
 
@@ -137,14 +137,14 @@
 
 <p><i>Mettre un <strong>X</strong> lorsque le médecin était absent à la séance ou <strong>S</strong> s'il a assuré le rôle de secrétaire et <strong>M</strong> pour la modération</i></p>
 
-<p>
-<div class="ui form">
-  <div class="field">
-    <label>Signature médecin évaluateur</label>
-    <textarea></textarea>
-  </div>
-</div>
-</p>
+
+<table class="ui celled table">
+<thead><tr><th><label>Signature médecin évaluateur</label></th></tr></thead>
+<tbody><tr style="height:75px;"><td/></tr></tbody>
+</table>
+
+
+
 
 <table class="print-smalltext print-noborder">
 <tr class="print-noborder">
