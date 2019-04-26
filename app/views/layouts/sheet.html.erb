@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @sheet_title %></title>
+    <%= csrf_meta_tag %>
+    <%= render 'layouts/stylesheets' %>
+    <%= javascript_include_tag :application %>
+    <%= javascript_include_tag :initsemanticui %>
+    
+<style type="text/css">
+  /*  Define the background color for all the ODD background rows  */
+  tr:nth-child(odd) { 
+  background: #fff; 
+  }
+  /*  Define the background color for all the EVEN background rows  */
+  tbody tr:nth-child(even) td,
+  tbody tr.even td  {
+  background: #fff;
+  }
+</style>
+
+  </head>
+  <body>
+    <div class="container">
+      <section class="round">
+	<%= yield %>
+      </section>
+    </div>
+  </body>
+</html>

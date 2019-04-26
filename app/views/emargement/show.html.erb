@@ -1,0 +1,54 @@
+<table class="print-noborder">
+<tr class="print-noborder">
+  <td class="print-noborder"><img src="/images/logo_ep.png"/></td>
+  <td class="print-noborder">L'Evaluation des Pratiques Professionnelles : Un plus pour la Santé au Travail</td>
+  <td class="print-hide"><%= link_to 'Imprimer', '#', :onclick => 'window.print();return false;', class: "ui button mini green" %><%= link_to 'Retour', syntheses_path, class: "ui button mini" %></td>
+</tr>
+</table>
+
+<table class="ui celled table">
+  <thead><tr><th colspan="2"><label><%= @emargement.dmsession.programme.titre %></label></th></tr></thead>
+  <tbody>
+    <tr><th>Identifiant du groupe</th><td><%= @emargement.dmsession.titre %></td></tr>
+    <tr><th>Date</th><td><%= I18n.l Time.now %></td></tr>
+    <tr><th>Modérateur</th><td><%= @moderateurs %></td></tr>
+    <tr><th>Secrétaire</th><td><%= @secretaires %></label></tr>
+  </tbody>
+</table>
+
+<p/>
+
+<table class="ui celled table">
+  <thead>
+    <tr><th/><th>Identifiant des participants</th><th>Emargements</th></tr>
+  </thead>
+  <tbody>
+<% @emargement.dmsession.participants.each_with_index do |p,index| %>
+<tr><th><%= index + 1 %></th><td><%= p %></td><td/></tr>
+<% end %>
+  </tbody>
+</table>
+
+<p/>
+
+<table class="print-smalltext print-noborder">
+<tr class="print-noborder">
+  <td class="print-noborder"><img src="/images/logo_ep.png"/></td>
+  <td class="print-noborder">
+    <ul style="list-style: none;">
+      <li>Déclaration d'activité 11 94 07857 94</li>
+      <li>ANDPC 1136</li>
+      <li>N°Siret : 508 447 489 000 16</li>
+      <li>APE : 9499Z</li>
+    </ul>
+  </td>
+  <td class="print-noborder">
+    <ul style="list-style: none;">
+      <li>236 bis avenue Pierre Brossolette</li>
+      <li>94170 LE PERREUX</li>
+      <li>Site : http://www.ep-plus.org</li>
+      <li>Contact : secretariat@ep-plus.org</li>
+    </ul>
+  </td>
+</tr>
+</table>

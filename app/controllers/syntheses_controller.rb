@@ -8,7 +8,8 @@ class SynthesesController < ApplicationController
   end
 
   def show
-    render(:layout => "layouts/synthese")
+    @sheet_title = @synthese.titre unless @synthese.nil?
+    render(:layout => "layouts/sheet")
   end
 
   private
