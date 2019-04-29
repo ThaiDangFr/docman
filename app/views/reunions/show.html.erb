@@ -28,6 +28,11 @@
 </p>
 
 <p>
+  <strong>Feuille d'émargement:</strong>
+  <%= link_to 'Télécharger', emargement_path, target: "_blank" %>
+</p>
+
+<p>
     <strong>Programme:</strong>
     "<%= @reunion.dmsession.programme.titre %>" avec <%= @reunion.dmsession.programme.responsable %><br/>
     <% @reunion.dmsession.programme.documents.each do |p| %>
