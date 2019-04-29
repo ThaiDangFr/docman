@@ -1,4 +1,5 @@
 Rails.application.routes.draw do 
+  resources :compterendu, :only =>[:show]
   resources :emargement, :only => [:show]
 
   resources :syntheses, :only => [:index, :show]

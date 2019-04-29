@@ -1,0 +1,120 @@
+<table class="print-noborder">
+<tr class="print-noborder">
+  <td class="print-noborder"><img src="/images/logo_ep.png"/></td>
+  <td class="print-noborder">L'Evaluation des Pratiques Professionnelles : Un plus pour la Santé au Travail</td>
+  <td class="print-hide"><%= link_to 'Imprimer', '#', :onclick => 'window.print();return false;', class: "ui button mini green" %></td>
+</tr>
+</table>
+
+<table class="ui celled table">
+  <thead><tr><th colspan="2"><label>Compte rendu de séance <%= @compterendu.dmsession.programme.titre %></label></th></tr></thead>
+  <tbody>
+    <tr><th>Identifiant du groupe</th><td><%= @compterendu.dmsession.titre %></td></tr>
+    <tr><th>Date</th><td><%= I18n.l Time.now %></td></tr>
+    <tr><th>Modérateur</th><td><%= @moderateurs %></td></tr>
+    <tr><th>Secrétaire</th><td><%= @secretaires %></label></tr>
+  </tbody>
+</table>
+
+<br/>
+
+<form class="ui form">
+<table class="ui celled table">
+  <thead>
+    <tr><th>1. Validation du compte rendu de la réunion précédente</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><textarea style="width:99%;height:320px;" class="print-noborder"></textarea></td></tr>
+  </tbody>
+</table>
+
+<br/>
+
+<table class="ui celled table">
+  <thead>
+    <tr><th>2. Thèmes abordés au cours de la séance</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><textarea style="width:99%;height:320px;" class="print-noborder"></textarea></td></tr>
+  </tbody>
+</table>
+
+<br/>
+
+<table class="ui celled table">
+  <thead>
+    <tr><th>3. Discussion</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><textarea style="width:99%;height:430px;" class="print-noborder" placeholder="Problèmes soulevés par le groupe (synthèse, données anonymisées)"></textarea></td></tr>
+  </tbody>
+</table>
+
+<br/>
+
+<table class="ui celled table">
+  <thead>
+    <tr><th>4. Réponses aux problèmes soulevés</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><textarea style="width:99%;height:430px;" class="print-noborder" style="width:99%;" class="print-noborder"></textarea></td></tr>
+  </tbody>
+</table>
+
+<br/>
+
+<table class="ui celled table">
+  <thead>
+    <tr><th>5. Références</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><textarea style="width:99%;height:430px;" class="print-noborder" placeholder="Bibliographie, Réglementation, Recommandations, Autres"></textarea></td></tr>
+  </tbody>
+</table>
+
+<br/>
+
+<table class="ui celled table">
+  <thead>
+    <tr><th>6. Actions d'amélioration entreprise</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><textarea style="width:99%;height:430px;" class="print-noborder"></textarea></td></tr>
+  </tbody>
+</table>
+
+<br/>
+
+<table class="ui celled table">
+  <thead>
+    <tr><th>7. Modalités de suivi</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><textarea style="width:99%;height:430px;" class="print-noborder"></textarea></td></tr>
+  </tbody>
+</table>
+</form>
+
+<br/>
+
+<table class="print-smalltext print-noborder">
+<tr class="print-noborder">
+  <td class="print-noborder"><img src="/images/logo_ep.png"/></td>
+  <td class="print-noborder">
+    <ul style="list-style: none;">
+      <li>Déclaration d'activité 11 94 07857 94</li>
+      <li>ANDPC 1136</li>
+      <li>N°Siret : 508 447 489 000 16</li>
+      <li>APE : 9499Z</li>
+    </ul>
+  </td>
+  <td class="print-noborder">
+    <ul style="list-style: none;">
+      <li>236 bis avenue Pierre Brossolette</li>
+      <li>94170 LE PERREUX</li>
+      <li>Site : http://www.ep-plus.org</li>
+      <li>Contact : secretariat@ep-plus.org</li>
+    </ul>
+  </td>
+</tr>
+</table>

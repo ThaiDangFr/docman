@@ -43,3 +43,13 @@ border:none; outline:none;
 -webkit-appearance: none;
 }
 a:link, a:visited {background:transparent;font-weight:700;text-decoration:none;color:black;}
+textarea.print-noborder
+{
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none; /*remove the resize handle on the bottom right*/
+}
