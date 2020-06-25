@@ -9,5 +9,5 @@ Ecrit en Rails 5
 bundle exec rake db:populate
 
 # le compte de test est :
-example@railsttorial.org/foobar
+example@railstutorial.org/foobar
 ```
